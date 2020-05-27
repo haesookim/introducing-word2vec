@@ -27,16 +27,18 @@ header {
   margin-top: 10px;
 }
 
-main .title {
-  width: 700px;
+main #title {
   margin: 0 auto;
+  height: 100vh;
 }
-main .title hr {
+main #title h1 {
+  width: 100%;
+}
+main #title hr {
   margin: 30px auto;
   width: 150px;
 }
-main .title .bodytext {
-  margin: 0 50px;
+main #title .bodytext {
   font-weight: 100;
   font-size: 12px;
 }
@@ -49,17 +51,22 @@ main .section {
   width: 700px;
   margin: 0 auto;
   padding: 30px 0;
-  height: 100vh;
+  height: 400px;
   font-weight: 300;
 }
 main .section .section-title {
   position: sticky;
   top: 40px;
+  font-weight: 600;
+}
+main .section .bodytext {
+  width: 100%;
 }
 main #quiz {
   text-align: center;
 }
-main #quiz .answerbox {
+main #quiz #answerbox {
+  display: none;
   background-color: white;
   width: 500px;
   margin: 10px auto;
@@ -92,11 +99,11 @@ main #interactive {
 #popup .content {
   margin: 20px 10px 10px;
 }
-#popup .content .title {
+#popup .content #title {
   font-weight: 700;
   font-size: 18px;
 }
-#popup .content .explanation {
+#popup .content #explanation {
   font-weight: 100;
   font-size: 14px;
 }

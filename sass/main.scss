@@ -28,15 +28,18 @@ header {
 }
 
 main {
-    .title {
-        width: 700px;
+    #title {
         margin: 0 auto;
+        height: 100vh;
+        h1 {
+            width: 100%;
+        }
         hr {
             margin: 30px auto;
             width: 150px;
         }
         .bodytext {
-            margin: 0 50px;
+            //margin: 0 50px;
             font-weight: 100;
             font-size: 12px;
         }
@@ -52,18 +55,29 @@ main {
         .section-title {
             position: sticky;
             top: 40px;
+
+            font-weight: 600;
+        }
+        .bodytext {
+            width: 100%;
         }
         width: 700px;
         margin: 0 auto;
         padding: 30px 0;
-        height: 100vh;
+        height: 400px;
         font-weight: 300;
+
+        // display: flex;
+        // flex-wrap: wrap;
+        // align-items: center;
+        // justify-content: center;
     }
 
     #quiz {
         text-align: center;
 
-        .answerbox {
+        #answerbox {
+            display: none;
             background-color: white;
             width: 500px;
             margin: 10px auto;
@@ -97,11 +111,11 @@ main {
     }
     .content {
         margin: 20px 10px 10px;
-        .title {
+        #title {
             font-weight: 700;
             font-size: 18px;
         }
-        .explanation {
+        #explanation {
             font-weight: 100;
             font-size: 14px;
         }
