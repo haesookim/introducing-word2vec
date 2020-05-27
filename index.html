@@ -28,14 +28,15 @@
 </head>
 
 <body>
-    <div class="contents">
+    <!-- <div class="contents">
         <div class="name">Jump to Section</div>
         <div class="contents-box">1. </div>
         <div class="contents-box">2. </div>
         <div class="contents-box">3. </div>
         <div class="contents-box">4. </div>
-    </div>
+    </div> -->
     <div id="popup">
+        <button id="close" onclick="closePopup()">X</button>
         <div class="content">
             <div id="title">Key term</div>
             <div id="explanation">Definition or explanation of key term</div>
@@ -47,38 +48,41 @@
 			<!--div class="authorinfo center">Haesoo Kim, Sunhong Min</div-->
             <hr />
             <div class="bodytext">
-                Lorem ipsum dolor sit amet, <span class="keyterm">consectetur</span> adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Are you a recommendation designer who needs to understand how embedding models work? A student lost in your first NLP lecture? A curious enthusiast? Whichever you are, we can help. In this module, we will learn about the concept of Word2Vec as a word-embedding model, as well as look at the ways that Word2Vec could be applied to the real world.
 			</div>
         </div>
         <div class="section">
             <div class="section-title">1. What is Word2Vec?</div>
-        </div>
-        <div class="section" id="quiz">
-            <div class="bodytext">
-                Let's see if you understood the concept of relationship vectors.
+            <div class="subsection bodytext">
+                Word2Vec is a method of producing <span class="keyterm">word-embeddings</span> that involve training a large corpus of text data and transforming it into a set of vectors. That's right - vectors as in the ones you see in coordinates and spaces. How do these apply to text and words, a distinctly abstract form of information?
             </div>
+            
+            <div class="subsection">Information about relationship vectors etc. go here</div>
 
-            <div>Korea: Seoul = Japan:_______</div>
-            <div class="bodytext">
-                What would fit in the blank? Type in your answer below.           
+            <div class="subsection" id="quiz">
+                <div class="bodytext">
+                    Let's see if you understood the concept of relationship vectors.
+                </div>
+
+                <div>Korea: Seoul = Japan:_______</div>
+                <div class="bodytext">
+                    What would fit in the blank? Type in your answer below.           
+                </div>
+
+                <input id="metaphor-quiz"><button class="quizbutton" onclick=onClickQuizButton()>Submit</button>
+
+                <button>skip</button>
+                <div id="answerbox">That's right! The answer is Tokyo.<br>The relationship between the words are (Country):(Capital).</div>
             </div>
-
-            <input id="metaphor-quiz"><button class="quizbutton" onclick=onClickQuizButton()>Submit</button>
-
-            <button>skip</button>
-            <div id="answerbox">That's right! The answer is Tokyo.<br>The relationship between the words are (Country):(Capital).</div>
         </div>
         <div class="section">
             <div class="section-title">2. How are the vectors created?</div>
+            <div class="sub section">Breaking the code down into parameters</div>
+            <div class="sub section">CBOW vs Skip-gram</div>
         </div>
         <div class="section">
             <div class="section-title">3. Where can we use Word2Vec?</div>
+            <div class="sub section">List of applications</div>
         </div>
         <div class="section" id="interactive">
             interactive module section

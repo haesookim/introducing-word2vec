@@ -17,23 +17,31 @@ const onClickQuizButton = () => {
 
 let keyterms = document.getElementsByClassName("keyterm");
 let popup = document.getElementById("popup");
+let isPopupOpen = false;
 
-let keytermDict = { consectetur: "Some value" };
+let keytermDict = {
+    "word-embeddings": "Mapping words or features to vectors of real numbers",
+};
 
 for (i = 0; i < keyterms.length; i++) {
-    console.log(keyterms[i]);
-    keyterms[i].addEventListener("mouseenter", function (event) {
-        popup.style.display = "block";
-        let currentTerm = this.innerHTML;
-        popup.querySelector("#title").innerHTML = currentTerm;
-        popup.querySelector("#explanation").innerHTML =
-            keytermDict[currentTerm];
+    //disabled jumpy hover code for now
 
-        popup.style.top = event.clientY + "px";
-        popup.style.left = event.clientX + "px";
-    });
-
-    keyterms[i].addEventListener("mouseout", function () {
-        popup.style.display = "none";
+    keyterms[i].addEventListener("click", function (event) {
+        isPopupOpen = !isPopupOpen;
+        if (isPopupOpen) {
+            popup.style.display = "block";
+            let currentTerm = this.innerHTML;
+            popup.querySelector("#title").innerHTML = currentTerm;
+            popup.querySelector("#explanation").innerHTML =
+                keytermDict[currentTerm];
+            popup.style.top = window.pageYOffset + event.clientY + "px";
+            popup.style.left = event.clientX + "px";
+        } else {
+            closePopup();
+        }
     });
 }
+
+const closePopup = () => {
+    popup.style.display = "none";
+};
