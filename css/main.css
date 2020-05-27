@@ -5,39 +5,14 @@ body {
   background-color: #fff7e0;
 }
 
-header {
-  height: 30px;
-}
-
-.contents {
-  background-color: white;
-  position: fixed;
-  left: 50px;
-  top: 30vh;
-  width: 200px;
-  padding: 20px 10px;
-  border: solid 1px black;
-  border-radius: 3px;
-}
-.contents .name {
-  margin-bottom: 10px;
-}
-.contents .contents-box {
-  margin-left: 10px;
-  margin-top: 10px;
-}
-
 main {
   scroll-snap-type: y mandatory;
   height: 100vh;
+  overflow: scroll;
 }
 main #title {
   margin: 0 auto;
-  padding: 0;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 main #title h1 {
   width: 100%;
@@ -55,12 +30,26 @@ main .center {
   margin: 0 auto;
   width: fit-content;
 }
-main .section {
-  scroll-snap-align: start;
-  scroll-snap-type: y mandatory;
+main .section-title {
+  position: sticky;
+  top: 0px;
+  padding: 30px 0 10px;
   width: 700px;
   margin: 0 auto;
-  padding: 30px 0;
+  background-color: #fff7e0;
+  font-weight: 600;
+}
+main .section {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 700px;
+  margin: 0 auto;
+  position: relative;
+  top: -30px;
   font-weight: 300;
 }
 main .section .keyterm {
@@ -73,22 +62,9 @@ main .section .keyterm:hover {
   color: royalblue;
   cursor: pointer;
 }
-main .section .section-title {
-  position: sticky;
-  top: 0px;
-  padding: 60px 0 10px;
-  width: 100%;
-  background-color: #fff7e0;
-  font-weight: 600;
-}
 main .section .bodytext {
   width: 100%;
   margin: 20px 0;
-}
-main .section .subsection {
-  scroll-snap-align: start;
-  margin: 250px 0 400px;
-  height: fit-content;
 }
 main #quiz {
   text-align: center;
@@ -135,11 +111,6 @@ main #interactive {
 #popup .content #explanation {
   font-weight: 100;
   font-size: 14px;
-}
-
-footer {
-  padding: 0 20%;
-  height: 50px;
 }
 
 /*# sourceMappingURL=main.css.map */

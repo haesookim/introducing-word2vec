@@ -5,38 +5,16 @@ body {
     background-color: rgb(255, 247, 224);
 }
 
-header {
-    height: 30px;
-}
-
-.contents {
-    background-color: white;
-    position: fixed;
-    left: 50px;
-    top: 30vh;
-    width: 200px;
-    padding: 20px 10px;
-    border: solid 1px black;
-    border-radius: 3px;
-    .name {
-        margin-bottom: 10px;
-    }
-    .contents-box {
-        margin-left: 10px;
-        margin-top: 10px;
-    }
-}
-
 main {
     scroll-snap-type: y mandatory;
     height: 100vh;
+    overflow: scroll;
     #title {
         margin: 0 auto;
-        padding: 0;
         height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
         h1 {
             width: 100%;
         }
@@ -57,9 +35,24 @@ main {
         width: fit-content;
     }
 
+    .section-title {
+        position: sticky;
+        top: 0px;
+        padding: 30px 0 10px;
+        width: 700px;
+        margin: 0 auto;
+        background-color: rgb(255, 247, 224);
+
+        font-weight: 600;
+    }
     .section {
         scroll-snap-align: start;
-        scroll-snap-type: y mandatory;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
         .keyterm {
             text-decoration: royalblue;
             font-weight: 400;
@@ -70,30 +63,16 @@ main {
                 cursor: pointer;
             }
         }
-        .section-title {
-            position: sticky;
-            top: 0px;
-            padding: 60px 0 10px;
-            width: 100%;
-            background-color: rgb(255, 247, 224);
-
-            font-weight: 600;
-        }
         .bodytext {
             width: 100%;
             margin: 20px 0;
         }
         width: 700px;
         margin: 0 auto;
-        padding: 30px 0;
-        //height: 400px;
+        position: relative;
+        top: -30px;
+        //padding: -30px 0 30px;
         font-weight: 300;
-
-        .subsection {
-            scroll-snap-align: start;
-            margin: 250px 0 400px;
-            height: fit-content;
-        }
     }
 
     #quiz {
@@ -144,9 +123,4 @@ main {
             font-size: 14px;
         }
     }
-}
-
-footer {
-    padding: 0 20%;
-    height: 50px;
 }

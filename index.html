@@ -40,50 +40,66 @@
         <div class="content">
             <div id="title">Key term</div>
             <div id="explanation">Definition or explanation of key term</div>
-        </div>     
+        </div>
     </div>
     <main>
         <div class="section" id="title">
-			<h1 class="center">Introducing Word2Vec</h1>
-			<!--div class="authorinfo center">Haesoo Kim, Sunhong Min</div-->
+            <h1 class="center">Introducing Word2Vec</h1>
+            <!--div class="authorinfo center">Haesoo Kim, Sunhong Min</div-->
             <hr />
             <div class="bodytext">
-                Are you a recommendation designer who needs to understand how embedding models work? A student lost in your first NLP lecture? A curious enthusiast? Whichever you are, we can help. In this module, we will learn about the concept of Word2Vec as a word-embedding model, as well as look at the ways that Word2Vec could be applied to the real world.
-			</div>
-        </div>
-        <div class="section">
-            <div class="section-title">1. What is Word2Vec?</div>
-            <div class="subsection bodytext">
-                Word2Vec is a method of producing <span class="keyterm">word-embeddings</span> that involve training a large corpus of text data and transforming it into a set of vectors. That's right - vectors as in the ones you see in coordinates and spaces. How do these apply to text and words, a distinctly abstract form of information?
-            </div>
-            
-            <div class="subsection">Information about relationship vectors etc. go here</div>
-
-            <div class="subsection" id="quiz">
-                <div class="bodytext">
-                    Let's see if you understood the concept of relationship vectors.
-                </div>
-
-                <div>Korea: Seoul = Japan:_______</div>
-                <div class="bodytext">
-                    What would fit in the blank? Type in your answer below.           
-                </div>
-
-                <input id="metaphor-quiz"><button class="quizbutton" onclick=onClickQuizButton()>Submit</button>
-
-                <button>skip</button>
-                <div id="answerbox">That's right! The answer is Tokyo.<br>The relationship between the words are (Country):(Capital).</div>
+                Are you a recommendation designer who needs to understand how
+                embedding models work? A student lost in your first NLP lecture?
+                A curious enthusiast? Whichever you are, we can help. In this
+                module, we will learn about the concept of Word2Vec as a
+                word-embedding model, as well as look at the ways that Word2Vec
+                could be applied to the real world.
             </div>
         </div>
+        <div class="section-title">1. What is Word2Vec?</div>
         <div class="section">
-            <div class="section-title">2. How are the vectors created?</div>
-            <div class="sub section">Breaking the code down into parameters</div>
-            <div class="sub section">CBOW vs Skip-gram</div>
+            Word2Vec is a method of producing
+            <span class="keyterm">word-embeddings</span> that involve training a
+            large corpus of text data and transforming it into a set of vectors.
+            That's right - vectors as in the ones you see in coordinates and
+            spaces. How do these apply to text and words, a distinctly abstract
+            form of information?
         </div>
+
         <div class="section">
-            <div class="section-title">3. Where can we use Word2Vec?</div>
-            <div class="sub section">List of applications</div>
+            Information about relationship vectors etc. go here
         </div>
+
+        <div class="section" id="quiz">
+            <div class="bodytext">
+                Let's see if you understood the concept of relationship vectors.
+            </div>
+
+            <div>Korea: Seoul = Japan:_______</div>
+            <div class="bodytext">
+                What would fit in the blank? Type in your answer below.
+            </div>
+
+            <input id="metaphor-quiz" /><button
+                class="quizbutton"
+                onclick="onClickQuizButton()"
+            >
+                Submit
+            </button>
+
+            <button>skip</button>
+            <div id="answerbox">
+                That's right! The answer is Tokyo.<br />The relationship between
+                the words are (Country):(Capital).
+            </div>
+        </div>
+        <div class="section-title">2. How are the vectors created?</div>
+        <div class="section">
+            Breaking the code down into parameters
+        </div>
+        <div class="section">CBOW vs Skip-gram</div>
+        <div class="section-title">3. Where can we use Word2Vec?</div>
+        <div class="section">List of applications</div>
         <div class="section" id="interactive">
             interactive module section
         </div>
@@ -94,10 +110,10 @@
         <div class="progress-box"></div>
         <div class="progress-box"></div>
     </div>
-    <footer>
+    <!-- <footer>
 		2020 Spring SNU Human-Computer Interaction </br>
 		&copy; Sunhong, Haesoo
-    </footer>
+    </footer> -->
 
     <!-- Javascript -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
