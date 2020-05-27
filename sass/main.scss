@@ -56,7 +56,6 @@ main {
         .keyterm {
             text-decoration: royalblue;
             font-weight: 400;
-            display: inline-block;
             &:hover {
                 font-weight: 700;
                 color: royalblue;
@@ -79,8 +78,9 @@ main {
         text-align: center;
 
         #answerbox {
-            display: none;
-            position: absolute;
+            opacity: 0;
+            //position: relative;
+            top: 100px;
             background-color: white;
             width: 500px;
             margin: 30px 100px;

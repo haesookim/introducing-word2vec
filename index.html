@@ -35,13 +35,6 @@
         <div class="contents-box">3. </div>
         <div class="contents-box">4. </div>
     </div> -->
-    <div id="popup">
-        <button id="close" onclick="closePopup()">X</button>
-        <div class="content">
-            <div id="title">Key term</div>
-            <div id="explanation">Definition or explanation of key term</div>
-        </div>
-    </div>
     <main>
         <div class="section" id="title">
             <h1 class="center">Introducing Word2Vec</h1>
@@ -58,19 +51,23 @@
         </div>
         <div class="section-title">1. What is Word2Vec?</div>
         <div class="section">
-            Word2Vec is a method of producing
-            <span class="keyterm">word-embeddings</span> that involve training a
-            large corpus of text data and transforming it into a set of vectors.
-            That's right - vectors as in the ones you see in coordinates and
-            spaces. How do these apply to text and words, a distinctly abstract
-            form of information?
+            <div class="bodytext">
+                Word2Vec is a method of producing
+                <b class="keyterm">word-embeddings</b> that involve training a
+                large corpus of text data and transforming it into a set of
+                vectors. That's right - vectors as in the ones you see in
+                coordinates and spaces. How do these apply to text and words, a
+                distinctly abstract form of information?
+            </div>
         </div>
 
         <div class="section">
-            Information about relationship vectors etc. go here
+            <div class="bodytext">
+                Information about relationship vectors etc. go here
+            </div>
         </div>
 
-        <div class="section" id="quiz">
+        <div class="section flex" id="quiz">
             <div class="bodytext">
                 Let's see if you understood the concept of relationship vectors.
             </div>
@@ -80,12 +77,14 @@
                 What would fit in the blank? Type in your answer below.
             </div>
 
-            <input id="metaphor-quiz" /><button
-                class="quizbutton"
-                onclick="onClickQuizButton()"
-            >
-                Submit
-            </button>
+            <div id="quizinput">
+                <input id="metaphor-quiz" /><button
+                    class="quizbutton"
+                    onclick="onClickQuizButton()"
+                >
+                    Submit
+                </button>
+            </div>
 
             <button>skip</button>
             <div id="answerbox">
@@ -104,6 +103,13 @@
             interactive module section
         </div>
     </main>
+    <div id="popup">
+        <button id="close" onclick="closePopup()">X</button>
+        <div class="content">
+            <div id="title">Key term</div>
+            <div id="explanation">Definition or explanation of key term</div>
+        </div>
+    </div>
     <div class="progressbar">
         <div class="progress-box"></div>
         <div class="progress-box"></div>

@@ -10,7 +10,7 @@ const onClickQuizButton = () => {
         answerbox.innerHTML =
             "Unfortunately, that's not the right answer. The answer is Tokyo.<br>The relationship between the words are (Country):(Capital).";
     }
-    answerbox.style.display = "block";
+    answerbox.style.opacity = "100%";
 };
 
 // keyterms popup logic
