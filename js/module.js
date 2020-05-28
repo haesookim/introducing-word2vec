@@ -22,6 +22,10 @@ let tooltip = d3
     .style("border-radius", "4px")
     .style("padding", "10px");
 
+//selecting a pair of point for comparison
+let pair = [null, null];
+let selectpoints = (point) => {};
+
 // Reusable chart drawing code for when the data source changes
 
 let drawdata = (data) => {

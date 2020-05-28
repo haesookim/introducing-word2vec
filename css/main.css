@@ -90,6 +90,20 @@ main .section .bodytext {
   width: 100%;
   margin: 20px 0;
 }
+main .section #architecture-output {
+  height: 80px;
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+}
+main .section #architecture-output .parsedword {
+  margin: 10px 15px;
+  height: fit-content;
+  padding: 0 15px;
+  border-radius: 3px;
+  background-color: #3131aa;
+  color: white;
+}
 main #quiz {
   text-align: center;
 }
@@ -112,21 +126,27 @@ main #interactive {
   z-index: 100;
 }
 main #interactive #controller {
-  width: 90%;
+  width: 200px;
   height: 300px;
   border: 1px solid darkgray;
   align-self: end;
   justify-self: right;
   margin-bottom: 30px;
+  padding: 10px 20px 0;
 }
 main #interactive #display {
+  align-self: end;
   width: 90%;
-  height: 90%;
-  margin: auto;
+  height: 90vh;
+  margin: 0 auto 30px;
   border: 1px solid darkgray;
 }
 main #interactive #secondaryview {
+  background-color: rgba(0, 0, 0, 0.9);
   position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: none;
 }
 
 #popup {

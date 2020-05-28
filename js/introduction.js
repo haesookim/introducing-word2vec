@@ -1,3 +1,5 @@
+//interactive Quiz
+
 const onClickQuizButton = () => {
     let option = document.getElementById("metaphor-quiz").value;
     let answerbox = document.getElementById("answerbox");
@@ -5,12 +7,34 @@ const onClickQuizButton = () => {
     console.log(option);
     if (option.toLowerCase() === "tokyo") {
         answerbox.innerHTML =
-            "That's right! The answer is Tokyo.<br>The relationship between the words are (Country):(Capital).";
+            "That's right! The answer is Tokyo.<br>The relationship between the words are (Country):(Capital).<br>The distance vector between Korea and Seoul will match the vector between Japan and Tokyo.";
     } else {
         answerbox.innerHTML =
-            "Unfortunately, that's not the right answer. The answer is Tokyo.<br>The relationship between the words are (Country):(Capital).";
+            "Unfortunately, that's not the right answer. The answer is Tokyo.<br>The relationship between the words are (Country):(Capital).<br>The distance vector between Korea and Seoul will match the vector between Japan and Tokyo.";
     }
     answerbox.style.opacity = "100%";
+};
+
+// Interactive Architecture test
+const onClickArchitectureButton = () => {
+    let sentence = document.getElementById("architecture-interactive").value;
+    let parent = document.getElementById("architecture-output");
+    let parsed = sentence.split(" ");
+    parent.innerHTML = "";
+
+    for (i = 0; i < parsed.length; i++) {
+        let tempword = document.createElement("div");
+
+        tempword.className = "parsedword";
+        tempword.innerHTML = parsed[i];
+
+        tempword.onclick = onClickWord(tempword);
+        parent.appendChild(tempword);
+    }
+};
+
+const onClickWord = (word) => {
+    word.style.backgroundColor = "black";
 };
 
 // keyterms popup logic
@@ -58,3 +82,5 @@ const closeMenu = () => {
 };
 
 // Menu scroll to position logic
+
+//

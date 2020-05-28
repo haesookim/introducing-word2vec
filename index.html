@@ -94,7 +94,7 @@
                 </button>
             </div>
 
-            <button>skip</button>
+            <!-- <button>skip</button> -->
             <div id="answerbox">
                 That's right! The answer is Tokyo.<br />The relationship between
                 the words are (Country):(Capital).
@@ -104,16 +104,84 @@
         <div class="section">
             Breaking the code down into parameters
         </div>
-        <div class="section">CBOW vs Skip-gram</div>
+        <div class="section">
+            <div class="bodytext">
+                There are two main methods that Word2Vec uses to predict a
+                certain target word based on its neighboring words. The first
+                method is called the CBOW (Continuous-Bag-of-Words) model, and
+                the second is called the Skip-Gram Model.<br />
+                The CBOW model predicts a word based on the sum of its
+                neighboring words, and the Skip-Gram model does the exact
+                opposite, predicting neighboring words from a single word.
+            </div>
+        </div>
+        <div class="section">
+            <div class="bodytext">
+                Let's try this out. Type in a sentence below.
+            </div>
+            <div id="architecture-input">
+                <input id="architecture-interactive" />
+                <button
+                    class="architecture-button"
+                    onclick="onClickArchitectureButton()"
+                >
+                    Submit
+                </button>
+            </div>
+            <div id="architecture-output"></div>
+            <div id="architecture-visualization"></div>
+        </div>
         <div class="section-title">3. Where can we use Word2Vec?</div>
         <div class="section">List of applications</div>
         <div class="section-title">4. Interactive Module Demo</div>
         <div class="section" id="interactive">
             <div id="controller">
                 <div>Change the parameters to see how the results differ!</div>
+                <div>
+                    <label for="size">Size:</label>
+
+                    <select name="size" id="size">
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="150">150</option>
+                        <option value="200">200</option>
+                    </select>
+                </div>
+                <label for="window">Window Size:</label>
+
+                <div>
+                    <select name="window" id="window">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="model">Training Model:</label>
+
+                    <select name="model" id="model">
+                        <option value="cbow">CBOW</option>
+                        <option value="skip-gram">Skip-gram</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="theme">Word Theme:</label>
+
+                    <select name="theme" id="theme">
+                        <option value="country">Countries</option>
+                        <option value="food">Food</option>
+                        <option value="birds">Birds</option>
+                        <option value="sports">Sports</option>
+                    </select>
+                </div>
             </div>
             <div id="display"></div>
-            <div id="secondaryview"></div>
+            <div id="secondaryview">
+                <div id="selection"></div>
+                <button>Clear selection</button>
+            </div>
         </div>
     </main>
     <div id="popup">
