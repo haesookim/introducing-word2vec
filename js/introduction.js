@@ -45,3 +45,14 @@ for (i = 0; i < keyterms.length; i++) {
 const closePopup = () => {
     popup.style.display = "none";
 };
+
+// Menu visualizing logic
+let menu = document.getElementById("menu");
+
+const openMenu = () => {
+    menu.style.display = "block";
+};
+
+const closeMenu = () => {
+    menu.style.display = "none";
+};

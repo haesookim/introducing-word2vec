@@ -5,12 +5,35 @@ body {
   background-color: #fff7e0;
 }
 
+#menubutton {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  z-index: 101;
+  background: rgba(0, 0, 0, 0.9);
+  border: none;
+  border-radius: 3px;
+  font-size: 32px;
+  color: white;
+}
+
+.contents {
+  background: rgba(0, 0, 0, 0.9);
+  height: 100vh;
+  width: 200px;
+  position: absolute;
+  z-index: 101;
+  color: white;
+  display: none;
+}
+
 main {
   scroll-snap-type: y mandatory;
   height: 100vh;
   overflow: scroll;
 }
 main #title {
+  background-color: white;
   margin: 0 auto;
   height: 100vh;
 }
@@ -34,9 +57,11 @@ main .section-title {
   position: sticky;
   top: 0px;
   padding: 30px 0 10px;
-  width: 700px;
+  min-width: 700px;
+  width: 50%;
   margin: 0 auto;
   background-color: #fff7e0;
+  z-index: 10;
   font-weight: 600;
 }
 main .section {
@@ -46,10 +71,10 @@ main .section {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  width: 700px;
-  margin: 0 auto;
+  min-width: 700px;
+  width: 50%;
+  padding: 0 25%;
   position: relative;
-  top: -30px;
   font-weight: 300;
 }
 main .section .keyterm {
@@ -80,7 +105,28 @@ main #quiz #answerbox {
 main #interactive {
   height: 100vh;
   width: 100vw;
+  padding: 0;
   background-color: white;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  z-index: 100;
+}
+main #interactive #controller {
+  width: 90%;
+  height: 300px;
+  border: 1px solid darkgray;
+  align-self: end;
+  justify-self: right;
+  margin-bottom: 30px;
+}
+main #interactive #display {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  border: 1px solid darkgray;
+}
+main #interactive #secondaryview {
+  position: absolute;
 }
 
 #popup {
