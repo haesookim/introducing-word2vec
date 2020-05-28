@@ -56,3 +56,5 @@ const openMenu = () => {
 const closeMenu = () => {
     menu.style.display = "none";
 };
+
+// Menu scroll to position logic
