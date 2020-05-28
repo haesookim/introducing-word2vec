@@ -104,9 +104,10 @@ main {
             margin-top: 30px;
             width: 100%;
             display: flex;
+            flex-wrap: wrap;
             //justify-content: center;
             .parsedword {
-                margin: 10px 15px;
+                margin: 10px 5px;
                 height: fit-content;
                 padding: 0 15px;
                 border-radius: 3px;

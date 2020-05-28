@@ -28,13 +28,12 @@ const onClickArchitectureButton = () => {
         tempword.className = "parsedword";
         tempword.innerHTML = parsed[i];
 
-        tempword.onclick = onClickWord(tempword);
+        tempword.addEventListener("click", () => {
+            console.log(this);
+            this.style.backgroundColor = "black";
+        });
         parent.appendChild(tempword);
     }
-};
-
-const onClickWord = (word) => {
-    word.style.backgroundColor = "black";
 };
 
 // keyterms popup logic
