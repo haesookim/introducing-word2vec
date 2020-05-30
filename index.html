@@ -140,7 +140,7 @@
                 <div>
                     <label for="size">Size:</label>
 
-                    <select name="size" id="size">
+                    <select name="size" id="size" onchange="createNewData()">
                         <option value="50">50</option>
                         <option value="100">100</option>
                         <option value="150">150</option>
@@ -150,7 +150,11 @@
                 <label for="window">Window Size:</label>
 
                 <div>
-                    <select name="window" id="window">
+                    <select
+                        name="window"
+                        id="window"
+                        onchange="createNewData()"
+                    >
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
@@ -161,15 +165,15 @@
                 <div>
                     <label for="model">Training Model:</label>
 
-                    <select name="model" id="model">
-                        <option value="cbow">CBOW</option>
-                        <option value="skip-gram">Skip-gram</option>
+                    <select name="model" id="model" onchange="createNewData()">
+                        <option value="0">CBOW</option>
+                        <option value="1">Skip-gram</option>
                     </select>
                 </div>
                 <div>
                     <label for="theme">Word Theme:</label>
 
-                    <select name="theme" id="theme">
+                    <select name="theme" id="theme" onchange="createNewData()">
                         <option value="country">Countries</option>
                         <option value="food">Food</option>
                         <option value="birds">Birds</option>

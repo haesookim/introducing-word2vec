@@ -26,14 +26,35 @@ let tooltip = d3
 let pair = [null, null];
 let selectpoints = (point) => {};
 
+// selecting a pair of parameters
+
+let sizeParameter = document.getElementById("size");
+let windowParameter = document.getElementById("window");
+let modelParameter = document.getElementById("model");
+let themeParameter = document.getElementById("theme");
+
+let datastring = "birds_50_2_0.csv";
+const createNewData = () => {
+    let size = sizeParameter.options[sizeParameter.selectedIndex].value;
+    let window = windowParameter.options[windowParameter.selectedIndex].value;
+    let model = modelParameter.options[modelParameter.selectedIndex].value;
+    let theme = themeParameter.options[themeParameter.selectedIndex].value;
+
+    datastring = theme + "_" + size + "_" + window + "_" + model + ".csv";
+
+    d3.csv("../data/" + datastring, function (data) {
+        drawdata(data);
+    });
+};
+
 // Reusable chart drawing code for when the data source changes
 
 let drawdata = (data) => {
     // Add X axis
-    var x = d3.scaleLinear().domain([0, 4000]).range([0, width]);
+    var x = d3.scaleLinear().domain([-10, 10]).range([0, width]);
     svg.append("g").attr("transform", "translate(0," + height + ")");
     // Add Y axis
-    var y = d3.scaleLinear().domain([0, 500000]).range([height, 0]);
+    var y = d3.scaleLinear().domain([-10, 10]).range([height, 0]);
 
     // Add dots
     svg.append("g")
@@ -42,10 +63,10 @@ let drawdata = (data) => {
         .enter()
         .append("circle")
         .attr("cx", function (d) {
-            return x(d.GrLivArea);
+            return x(d.x);
         })
         .attr("cy", function (d) {
-            return y(d.SalePrice);
+            return y(d.y);
         })
         .attr("r", 3)
         .style("fill", "#69b3a2dd")
@@ -53,7 +74,7 @@ let drawdata = (data) => {
             d3.select(this).attr("r", 5);
             tooltip.style("opacity", 1);
             tooltip
-                .html(d.GrLivArea)
+                .html(d.name)
                 .style("left", d3.mouse(this)[0] + 370 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
                 .style("top", d3.mouse(this)[1] + 30 + "px");
         })
@@ -67,9 +88,6 @@ let drawdata = (data) => {
 };
 
 // temporary data code
-d3.csv(
-    "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/2_TwoNum.csv",
-    function (data) {
-        drawdata(data);
-    },
-);
+d3.csv("../data/" + datastring, function (data) {
+    drawdata(data);
+});
