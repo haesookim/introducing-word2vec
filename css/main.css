@@ -147,6 +147,9 @@ main #interactive #display svg {
   height: 90%;
   margin: auto;
 }
+main #interactive #display svg circle {
+  cursor: pointer;
+}
 main #interactive #secondaryview {
   background-color: rgba(0, 0, 0, 0.9);
   position: absolute;

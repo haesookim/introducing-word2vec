@@ -43,7 +43,7 @@ const createNewData = () => {
 
     datastring = theme + "_" + size + "_" + window + "_" + model + ".csv";
 
-    d3.csv("../data/" + datastring, function (data) {
+    d3.csv("./../data/" + datastring, function (data) {
         d3.select("svg").remove();
         svg = d3
             .select("#display")
@@ -96,6 +96,6 @@ let drawdata = (data) => {
 };
 
 // temporary data code
-d3.csv("../data/" + datastring, function (data) {
+d3.csv("./../data/" + datastring, function (data) {
     drawdata(data);
 });
