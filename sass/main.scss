@@ -98,6 +98,35 @@ main {
         position: relative;
         font-weight: 300;
 
+        #example {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            table {
+                font-size: 14px;
+                border: 1px black solid;
+                border-collapse: collapse;
+                thead {
+                    font-weight: 700;
+                    background-color: orange;
+                    border: 1px black solid;
+                    border-collapse: collapse;
+                }
+                td {
+                    border: 1px black solid;
+                    border-collapse: collapse;
+                    padding: 0 2px;
+                    width: 70px;
+                }
+            }
+            svg {
+                overflow: visible;
+                text {
+                    font-size: 10px;
+                }
+            }
+        }
+
         // Architecture interaction section
         #architecture-output {
             height: 80px;

@@ -1,7 +1,6 @@
 /* D3 code to implement the interactive visualization module */
 
-let margin = { top: 10, right: 30, bottom: 30, left: 60 },
-    width = 800,
+let width = 800,
     height = 740;
 
 let svg = d3
