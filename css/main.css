@@ -142,6 +142,11 @@ main #interactive #display {
   margin: 0 auto 30px;
   border: 1px solid darkgray;
 }
+main #interactive #display svg {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+}
 main #interactive #secondaryview {
   background-color: rgba(0, 0, 0, 0.9);
   position: absolute;

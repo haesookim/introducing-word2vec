@@ -158,6 +158,11 @@ main {
             height: 90vh;
             margin: 0 auto 30px;
             border: 1px solid darkgray;
+            svg {
+                width: 90%;
+                height: 90%;
+                margin: auto;
+            }
         }
 
         #secondaryview {

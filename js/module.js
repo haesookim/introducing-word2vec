@@ -33,7 +33,8 @@ let windowParameter = document.getElementById("window");
 let modelParameter = document.getElementById("model");
 let themeParameter = document.getElementById("theme");
 
-let datastring = "birds_50_2_0.csv";
+let datastring = "country_50_2_0.csv";
+
 const createNewData = () => {
     let size = sizeParameter.options[sizeParameter.selectedIndex].value;
     let window = windowParameter.options[windowParameter.selectedIndex].value;
@@ -43,6 +44,13 @@ const createNewData = () => {
     datastring = theme + "_" + size + "_" + window + "_" + model + ".csv";
 
     d3.csv("../data/" + datastring, function (data) {
+        d3.select("svg").remove();
+        svg = d3
+            .select("#display")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g");
         drawdata(data);
     });
 };
@@ -51,10 +59,10 @@ const createNewData = () => {
 
 let drawdata = (data) => {
     // Add X axis
-    var x = d3.scaleLinear().domain([-10, 10]).range([0, width]);
+    var x = d3.scaleLinear().domain([-0.1, 1.1]).range([0, width]);
     svg.append("g").attr("transform", "translate(0," + height + ")");
     // Add Y axis
-    var y = d3.scaleLinear().domain([-10, 10]).range([height, 0]);
+    var y = d3.scaleLinear().domain([-0.1, 1.1]).range([height, 0]);
 
     // Add dots
     svg.append("g")
