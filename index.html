@@ -49,10 +49,11 @@
             <!--div class="authorinfo center">Haesoo Kim, Sunhong Min</div-->
             <hr />
             <div class="bodytext">
-                Are you a recommendation designer who needs to understand how
-                embedding models work? A student lost in your first NLP lecture?
-                A curious enthusiast? Whichever you are, we can help. In this
-                module, we will learn about the concept of Word2Vec as a
+                Are you a <b>recommendation designer</b> who needs to understand
+                how embedding models work?
+                <b>A student lost in your first NLP lecture</b>?
+                <b>A curious enthusiast</b>? Whichever you are, we can help. In
+                this module, we will learn about the concept of Word2Vec as a
                 word-embedding model, as well as look at the ways that Word2Vec
                 could be applied to the real world.
             </div>
@@ -71,7 +72,14 @@
 
         <div class="section">
             <div class="bodytext">
-                Information about relationship vectors etc. go here
+                Assume that words can be represented, only, by two features:
+                cuteness and size. Then, for every word, we can enumerate
+                appropriate numbers for its features. It is already done for you
+                in the left table. We just converted every word into a
+                two-dimensional vector! From now on, you can treat words as
+                vectors and apply any mathematical operations applicable to
+                vectors: draw it as a graph, calculate similarity between two
+                “words”, compare distance between several “words”, and so on.
             </div>
         </div>
 
@@ -102,20 +110,61 @@
         </div>
         <div class="section-title">2. How are the vectors created?</div>
         <div class="section">
-            Breaking the code down into parameters
+            <div class="bodytext">
+                The core idea of Word2Vec is to maximize the similarity between
+                the vectors for words that appear close together, i.e., in the
+                same context. The way to fulfill this is to calculate the
+                similarity between the target word and context words, divided by
+                the similarity of the target word and all other context words.
+                However, the amount of all other context words are too large to
+                calculate. Negative sampling method is the idea of calculating
+                only a random portion of other context words, resulting in
+                faster training time without compromising much accuracy. In
+                general, the combination of skip-gram model and negative
+                sampling method (SGNS) is the most widely used way to train
+                Word2Vec model.
+            </div>
         </div>
         <div class="section">
             <div class="bodytext">
                 There are two main methods that Word2Vec uses to predict a
                 certain target word based on its neighboring words. The first
-                method is called the CBOW (Continuous-Bag-of-Words) model, and
-                the second is called the Skip-Gram Model.<br />
+                method is called the
+                <span class="keyterm">CBOW</span> (Continuous-Bag-of-Words)
+                model, and the second is called the
+                <span class="keyterm">Skip-Gram</span> Model.<br />
                 The CBOW model predicts a word based on the sum of its
                 neighboring words, and the Skip-Gram model does the exact
                 opposite, predicting neighboring words from a single word.
             </div>
         </div>
         <div class="section">
+            <div class="bodytext">
+                CBOW model, or continuous bag-of-words model, learns to predict
+                the word by the context. In other words, it maximizes the
+                probability of the target word by looking at the context. For
+                example, given the context “I had a [...] dinner”, CBOW model
+                will tell you that most probably the word is “delicious” or
+                “nice”. Words like “delightful” will get much less attention of
+                the model, because it is designed to predict the most probable
+                word. It is much faster to train than the skip-gram model, with
+                slightly better accuracy for frequent words.
+            </div>
+        </div>
+        <div class="section">
+            <div class="bodytext">
+                Skip-gram model is designed to predict the context, given the
+                word. Given the word “delightful”, it must understand it and
+                tell us that there is a huge probability that the context is “I
+                had a [...] dinner”, or some other relevant context. With
+                skip-gram, the word “delightful” will not try to compete with
+                the word “delicious” but instead, “delightful + context” pairs
+                will be treated as new observations. It works well with small
+                amount of training data, representing well even for rare words,
+                compared to CBOW model.
+            </div>
+        </div>
+        <!-- <div class="section">
             <div class="bodytext">
                 Let's try this out. Type in a sentence below.
             </div>
@@ -130,9 +179,24 @@
             </div>
             <div id="architecture-output"></div>
             <div id="architecture-visualization"></div>
-        </div>
+        </div> -->
         <div class="section-title">3. Where can we use Word2Vec?</div>
-        <div class="section">List of applications</div>
+        <div class="section">
+            <div class="bodytext">
+                Word2Vec can be applied to various fields. It isn’t just
+                confined to words. We can think “items” as “words” and apply
+                similar machine learning algorithms. Using movie reviews as
+                input corpus text, a model can recommend movies the user would
+                like according to similarity. Also one can vectorize each “video
+                clip”, “song”, “book”, and so on. We call this as Item2Vec.
+                Contexts used in Item2Vec, for example a song, are songs that
+                are played by various users directly after the end of a
+                particular song. With sufficient amount of data, the system can
+                recommend a new song or an artist to the user, according to this
+                context-wise analyzed similarity between items, or songs in this
+                case.
+            </div>
+        </div>
         <div class="section-title">4. Interactive Module Demo</div>
         <div class="section" id="interactive">
             <div id="controller">
