@@ -42,8 +42,10 @@ const createNewData = () => {
 
     datastring = theme + "_" + size + "_" + window + "_" + model + ".csv";
 
-    d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
-        d3.select("svg").remove();
+    //d3.csv("./../introducing-word2vec/data/" + datastring, function (data) { // use when deploying to github pages
+
+    d3.csv("./../data/" + datastring, function (data) {
+        d3.select("#display").select("svg").remove().exit();
         svg = d3
             .select("#display")
             .append("svg")
@@ -95,6 +97,8 @@ let drawdata = (data) => {
 };
 
 // temporary data code
-d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+//d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+
+d3.csv("./../data/" + datastring, function (data) {
     drawdata(data);
 });
