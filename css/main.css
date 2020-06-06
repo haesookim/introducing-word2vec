@@ -71,6 +71,23 @@ main #interactive #left #controller #code-wrapper #code-snippet {
 }
 main #interactive #left #controller .dropdown {
   margin-top: 5px;
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: 120px auto 35px;
+}
+main #interactive #left #controller .dropdown .infobutton {
+  width: 22px;
+  height: 22px;
+  padding: 2px;
+  margin: 1px 5px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  border-radius: 100%;
+  cursor: pointer;
+}
+main #interactive #left #controller .dropdown .infobutton:hover {
+  background-color: #444444;
 }
 main #interactive #left #controller .title {
   font-size: 24px;
