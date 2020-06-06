@@ -45,6 +45,7 @@ const createNewData = () => {
     //d3.csv("./../introducing-word2vec/data/" + datastring, function (data) { // use when deploying to github pages
 
     d3.csv("./../data/" + datastring, function (data) {
+        console.log(datastring);
         d3.select("#display").select("svg").remove().exit();
         svg = d3
             .select("#display")
@@ -77,10 +78,10 @@ let drawdata = (data) => {
         .attr("cy", function (d) {
             return y(d.y);
         })
-        .attr("r", 3)
+        .attr("r", 5)
         .style("fill", "#69b3a2dd")
         .on("mouseover", function (d) {
-            d3.select(this).attr("r", 5);
+            d3.select(this).attr("r", 10);
             tooltip.style("opacity", 1);
             tooltip
                 .html(d.name)
@@ -88,7 +89,7 @@ let drawdata = (data) => {
                 .style("top", d3.mouse(this)[1] + 30 + "px");
         })
         .on("mouseleave", function (d) {
-            d3.select(this).attr("r", 3);
+            d3.select(this).attr("r", 5);
             tooltip.style("opacity", 0);
         })
         .on("click", function (d) {

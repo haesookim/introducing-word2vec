@@ -28,122 +28,8 @@ body {
 }
 
 main {
-  scroll-snap-type: y mandatory;
   height: 100vh;
   overflow: scroll;
-}
-main #title {
-  background-color: white;
-  margin: 0 auto;
-  height: 100vh;
-}
-main #title h1 {
-  width: 100%;
-}
-main #title hr {
-  margin: 30px auto;
-  width: 150px;
-}
-main #title .bodytext {
-  font-weight: 100;
-  font-size: 12px;
-}
-main .center {
-  text-align: center;
-  margin: 0 auto;
-  width: fit-content;
-}
-main .section-title {
-  position: sticky;
-  top: 0px;
-  padding: 30px 0 10px;
-  min-width: 700px;
-  width: 50%;
-  margin: 0 auto;
-  background-color: #fff7e0;
-  z-index: 10;
-  font-weight: 600;
-}
-main .section {
-  scroll-snap-align: start;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  min-width: 700px;
-  width: 50%;
-  padding: 0 25%;
-  position: relative;
-  font-weight: 300;
-}
-main .section .keyterm {
-  text-decoration: royalblue;
-  font-weight: 400;
-}
-main .section .keyterm:hover {
-  font-weight: 700;
-  color: royalblue;
-  cursor: pointer;
-}
-main .section .bodytext {
-  width: 100%;
-  margin: 20px 0;
-}
-main .section #example {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-main .section #example table {
-  font-size: 14px;
-  border: 1px black solid;
-  border-collapse: collapse;
-}
-main .section #example table thead {
-  font-weight: 700;
-  background-color: orange;
-  border: 1px black solid;
-  border-collapse: collapse;
-}
-main .section #example table td {
-  border: 1px black solid;
-  border-collapse: collapse;
-  padding: 0 2px;
-  width: 70px;
-}
-main .section #example svg {
-  overflow: visible;
-}
-main .section #example svg text {
-  font-size: 10px;
-}
-main .section #architecture-output {
-  height: 80px;
-  margin-top: 30px;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-main .section #architecture-output .parsedword {
-  margin: 10px 5px;
-  height: fit-content;
-  padding: 0 15px;
-  border-radius: 3px;
-  background-color: #3131aa;
-  color: white;
-}
-main #quiz {
-  text-align: center;
-}
-main #quiz #answerbox {
-  opacity: 0;
-  top: 100px;
-  background-color: white;
-  width: 500px;
-  margin: 30px 100px;
-  border: 1px solid darkgray;
-  padding: 20px 0;
 }
 main #interactive {
   height: 100vh;
@@ -151,17 +37,27 @@ main #interactive {
   padding: 0;
   background-color: white;
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 400px 1fr;
   z-index: 100;
 }
 main #interactive #controller {
-  width: 200px;
+  width: 300px;
   height: 300px;
   border: 1px solid darkgray;
   align-self: end;
   justify-self: right;
   margin-bottom: 30px;
   padding: 10px 20px 0;
+}
+main #interactive #controller #code-snippet {
+  font-family: "Roboto Mono", monospace;
+  background-color: #222222;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+main #interactive #controller .title {
+  font-size: 24px;
 }
 main #interactive #display {
   align-self: end;

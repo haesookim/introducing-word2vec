@@ -29,236 +29,20 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;700&display=swap"
         rel="stylesheet"
     />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+        rel="stylesheet"
+    />
 </head>
 
 <body>
     <button id="menubutton" onclick="openMenu()">
         <i class="fa fa-bars" aria-hidden="true"></i>
     </button>
-    <div class="contents" id="menu">
-        <button id="closeMenu" onclick="closeMenu()">X</button>
-        <div class="name">Jump to Section</div>
-        <div class="contents-box">1. What is Word2Vec?</div>
-        <div class="contents-box">2.</div>
-        <div class="contents-box">3.</div>
-        <div class="contents-box">4.</div>
-    </div>
     <main>
-        <div class="section" id="title">
-            <h1 class="center">Introducing Word2Vec</h1>
-            <!--div class="authorinfo center">Haesoo Kim, Sunhong Min</div-->
-            <hr />
-            <div class="bodytext">
-                Are you a <b>recommendation designer</b> who needs to understand
-                how embedding models work?
-                <b>A student lost in your first NLP lecture</b>?
-                <b>A curious enthusiast</b>? Whichever you are, we can help. In
-                this module, we will learn about the concept of Word2Vec as a
-                word-embedding model, as well as look at the ways that Word2Vec
-                could be applied to the real world.
-            </div>
-        </div>
-        <div class="section-title">1. What is Word2Vec?</div>
-        <div class="section">
-            <div class="bodytext">
-                Word2Vec is a method of producing
-                <b class="keyterm">word-embeddings</b> that involve training a
-                large corpus of text data and transforming it into a set of
-                vectors. That's right - vectors as in the ones you see in
-                coordinates and spaces. How do these apply to text and words, a
-                distinctly abstract form of information?
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="bodytext">
-                Assume that words can be represented, only, by two features:
-                cuteness and size. Then, for every word, we can enumerate
-                appropriate numbers for its features. It is already done for you
-                in the left table. We just converted every word into a
-                two-dimensional vector! From now on, you can treat words as
-                vectors and apply any mathematical operations applicable to
-                vectors: draw it as a graph, calculate similarity between two
-                “words”, compare distance between several “words”, and so on.
-            </div>
-            <div id="example">
-                <table id="exampletable">
-                    <thead>
-                        <tr>
-                            <td>Name</td>
-                            <td>Cuteness</td>
-                            <td>Size</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Kitten</td>
-                            <td>95</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>Hamster</td>
-                            <td>80</td>
-                            <td>8</td>
-                        </tr>
-                        <tr>
-                            <td>Tarantula</td>
-                            <td>8</td>
-                            <td>3</td>
-                        </tr>
-                        <tr>
-                            <td>Puppy</td>
-                            <td>90</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>Crocodile</td>
-                            <td>5</td>
-                            <td>40</td>
-                        </tr>
-                        <tr>
-                            <td>Dolphin</td>
-                            <td>60</td>
-                            <td>45</td>
-                        </tr>
-                        <tr>
-                            <td>Lobster</td>
-                            <td>2</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>Capybara</td>
-                            <td>70</td>
-                            <td>30</td>
-                        </tr>
-                        <tr>
-                            <td>Elephant</td>
-                            <td>65</td>
-                            <td>90</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="section flex" id="quiz">
-            <div class="bodytext">
-                Let's see if you understood the concept of relationship vectors.
-            </div>
-
-            <div>Korea: Seoul = Japan:_______</div>
-            <div class="bodytext">
-                What would fit in the blank? Type in your answer below.
-            </div>
-
-            <div id="quizinput">
-                <input id="metaphor-quiz" /><button
-                    class="quizbutton"
-                    onclick="onClickQuizButton()"
-                >
-                    Submit
-                </button>
-            </div>
-
-            <!-- <button>skip</button> -->
-            <div id="answerbox">
-                That's right! The answer is Tokyo.<br />The relationship between
-                the words are (Country):(Capital).
-            </div>
-        </div>
-        <div class="section-title">2. How are the vectors created?</div>
-        <div class="section">
-            <div class="bodytext">
-                The core idea of Word2Vec is to maximize the similarity between
-                the vectors for words that appear close together, i.e., in the
-                same context. The way to fulfill this is to calculate the
-                similarity between the target word and context words, divided by
-                the similarity of the target word and all other context words.
-                However, the amount of all other context words are too large to
-                calculate. Negative sampling method is the idea of calculating
-                only a random portion of other context words, resulting in
-                faster training time without compromising much accuracy. In
-                general, the combination of skip-gram model and negative
-                sampling method (SGNS) is the most widely used way to train
-                Word2Vec model.
-            </div>
-        </div>
-        <div class="section">
-            <div class="bodytext">
-                There are two main methods that Word2Vec uses to predict a
-                certain target word based on its neighboring words. The first
-                method is called the
-                <span class="keyterm">CBOW</span> (Continuous-Bag-of-Words)
-                model, and the second is called the
-                <span class="keyterm">Skip-Gram</span> Model.<br />
-                The CBOW model predicts a word based on the sum of its
-                neighboring words, and the Skip-Gram model does the exact
-                opposite, predicting neighboring words from a single word.
-            </div>
-        </div>
-        <div class="section">
-            <div class="bodytext">
-                CBOW model, or continuous bag-of-words model, learns to predict
-                the word by the context. In other words, it maximizes the
-                probability of the target word by looking at the context. For
-                example, given the context “I had a [...] dinner”, CBOW model
-                will tell you that most probably the word is “delicious” or
-                “nice”. Words like “delightful” will get much less attention of
-                the model, because it is designed to predict the most probable
-                word. It is much faster to train than the skip-gram model, with
-                slightly better accuracy for frequent words.
-            </div>
-        </div>
-        <div class="section">
-            <div class="bodytext">
-                Skip-gram model is designed to predict the context, given the
-                word. Given the word “delightful”, it must understand it and
-                tell us that there is a huge probability that the context is “I
-                had a [...] dinner”, or some other relevant context. With
-                skip-gram, the word “delightful” will not try to compete with
-                the word “delicious” but instead, “delightful + context” pairs
-                will be treated as new observations. It works well with small
-                amount of training data, representing well even for rare words,
-                compared to CBOW model.
-            </div>
-        </div>
-        <!-- <div class="section">
-            <div class="bodytext">
-                Let's try this out. Type in a sentence below.
-            </div>
-            <div id="architecture-input">
-                <input id="architecture-interactive" />
-                <button
-                    class="architecture-button"
-                    onclick="onClickArchitectureButton()"
-                >
-                    Submit
-                </button>
-            </div>
-            <div id="architecture-output"></div>
-            <div id="architecture-visualization"></div>
-        </div> -->
-        <div class="section-title">3. Where can we use Word2Vec?</div>
-        <div class="section">
-            <div class="bodytext">
-                Word2Vec can be applied to various fields. It isn’t just
-                confined to words. We can think “items” as “words” and apply
-                similar machine learning algorithms. Using movie reviews as
-                input corpus text, a model can recommend movies the user would
-                like according to similarity. Also one can vectorize each “video
-                clip”, “song”, “book”, and so on. We call this as Item2Vec.
-                Contexts used in Item2Vec, for example a song, are songs that
-                are played by various users directly after the end of a
-                particular song. With sufficient amount of data, the system can
-                recommend a new song or an artist to the user, according to this
-                context-wise analyzed similarity between items, or songs in this
-                case.
-            </div>
-        </div>
-        <div class="section-title">4. Interactive Module Demo</div>
         <div class="section" id="interactive">
             <div id="controller">
-                <div>Change the parameters to see how the results differ!</div>
+                <div class="title">Parameter Controls</div>
                 <div>
                     <label for="size">Size:</label>
 
@@ -268,9 +52,8 @@
                         <option value="200">200</option>
                     </select>
                 </div>
-                <label for="window">Window Size:</label>
-
                 <div>
+                    <label for="window">Window Size:</label>
                     <select
                         name="window"
                         id="window"
@@ -291,16 +74,10 @@
                         <option value="1">Skip-gram</option>
                     </select>
                 </div>
-                <div>
-                    <label for="theme">Word Theme:</label>
-
-                    <select name="theme" id="theme" onchange="createNewData()">
-                        <option value="country">Countries</option>
-                        <option value="food">Food</option>
-                        <option value="birds">Birds</option>
-                        <option value="sports">Sports</option>
-                        <option value="colors">Colors</option>
-                    </select>
+                Code Snippet:
+                <div id="code-snippet">
+                    Model = Word2Vec(corpus, size = 100, window = 3, min_count =
+                    min_count, workers = workers, sg = 1)
                 </div>
             </div>
             <div id="display"></div>
