@@ -23,7 +23,14 @@ let tooltip = d3
 
 //selecting a pair of point for comparison
 let pair = [null, null];
-let selectpoints = (point) => {};
+let selectpoints = (point) => {
+    if (pair[0] == null) {
+        pair[0] = point;
+    } else if (pair[1] == null) {
+        pair[1] = point;
+    }
+    console.log(pair);
+};
 
 // selecting a pair of parameters
 
@@ -93,6 +100,7 @@ let drawdata = (data) => {
             tooltip.style("opacity", 0);
         })
         .on("click", function (d) {
+            selectpoints(d);
             //comparison function
         });
 };

@@ -36,51 +36,75 @@
 </head>
 
 <body>
-    <button id="menubutton" onclick="openMenu()">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-    </button>
     <main>
         <div class="section" id="interactive">
-            <div id="controller">
-                <div class="title">Parameter Controls</div>
-                <div>
-                    <label for="size">Size:</label>
-
-                    <select name="size" id="size" onchange="createNewData()">
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                        <option value="200">200</option>
-                    </select>
+            <div id="left">
+                <div id="contents">
+                    <button id="menubutton" onclick="openMenu()">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </button>
+                    dd
                 </div>
-                <div>
-                    <label for="window">Window Size:</label>
-                    <select
-                        name="window"
-                        id="window"
-                        onchange="createNewData()"
-                    >
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
+                <div id="controller">
+                    <div class="title">Parameter Controls</div>
+                    <div class="subtitle">
+                        Select a combination of parameters and see how the
+                        vector embedding result changes
+                    </div>
+                    <div class="dropdown">
+                        <label for="size">Size:</label>
 
-                <div>
-                    <label for="model">Training Model:</label>
+                        <select
+                            name="size"
+                            id="size"
+                            onchange="createNewData()"
+                        >
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="200">200</option>
+                        </select>
+                    </div>
+                    <div class="dropdown">
+                        <label for="window">Window Size:</label>
+                        <select
+                            name="window"
+                            id="window"
+                            onchange="createNewData()"
+                        >
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
 
-                    <select name="model" id="model" onchange="createNewData()">
-                        <option value="0">CBOW</option>
-                        <option value="1">Skip-gram</option>
-                    </select>
-                </div>
-                Code Snippet:
-                <div id="code-snippet">
-                    Model = Word2Vec(corpus, size = 100, window = 3, min_count =
-                    min_count, workers = workers, sg = 1)
+                    <div class="dropdown">
+                        <label for="model">Training Model:</label>
+
+                        <select
+                            name="model"
+                            id="model"
+                            onchange="createNewData()"
+                        >
+                            <option value="0">CBOW</option>
+                            <option value="1">Skip-gram</option>
+                        </select>
+                    </div>
+                    <div id="code-wrapper">
+                        Code Snippet:
+                        <div id="code-snippet">
+                            Model = Word2Vec(corpus, size = 100, window = 3,
+                            min_count = min_count, workers = workers, sg = 1)
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="display"></div>
+            <div id="display">
+                <div id="search">
+                    <input placeholder="Search for a word..." />
+                    <button>Search</button>
+                </div>
+            </div>
             <div id="secondaryview">
                 <div id="selection"></div>
                 <button>Clear selection</button>

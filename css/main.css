@@ -40,36 +40,66 @@ main #interactive {
   grid-template-columns: 400px 1fr;
   z-index: 100;
 }
-main #interactive #controller {
-  width: 300px;
-  height: 300px;
+main #interactive #left {
+  display: grid;
+  grid-template-rows: 1fr 400px;
+}
+main #interactive #left #contents {
+  margin-top: 50px;
+  margin-left: 58px;
   border: 1px solid darkgray;
-  align-self: end;
+  align-self: stretch;
+  justify-self: stretch;
+}
+main #interactive #left #controller {
+  border: 1px solid darkgray;
+  align-self: stretch;
   justify-self: right;
-  margin-bottom: 30px;
+  margin: 10px 0 30px 58px;
   padding: 10px 20px 0;
 }
-main #interactive #controller #code-snippet {
+main #interactive #left #controller #code-wrapper {
+  margin-top: 30px;
+}
+main #interactive #left #controller #code-wrapper #code-snippet {
   font-family: "Roboto Mono", monospace;
   background-color: #222222;
   color: white;
   padding: 10px 20px;
-  font-size: 14px;
+  font-size: 12px;
+  margin-top: 5px;
 }
-main #interactive #controller .title {
+main #interactive #left #controller .dropdown {
+  margin-top: 5px;
+}
+main #interactive #left #controller .title {
   font-size: 24px;
+  font-weight: 700;
+}
+main #interactive #left #controller .subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  color: gray;
+  margin-bottom: 15px;
 }
 main #interactive #display {
+  display: flex;
   align-self: end;
-  width: 90%;
+  width: 95%;
   height: 90vh;
   margin: 0 auto 30px;
   border: 1px solid darkgray;
 }
+main #interactive #display #search {
+  position: absolute;
+  left: 440px;
+  top: 60px;
+}
 main #interactive #display svg {
+  justify-content: center;
   width: 90%;
   height: 90%;
-  margin: auto;
+  margin: auto auto;
 }
 main #interactive #display svg circle {
   cursor: pointer;
