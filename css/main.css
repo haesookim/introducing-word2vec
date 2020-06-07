@@ -69,6 +69,9 @@ main #interactive #left #controller #code-wrapper #code-snippet {
   font-size: 12px;
   margin-top: 5px;
 }
+main #interactive #left #controller #code-wrapper #code-snippet span {
+  color: yellow;
+}
 main #interactive #left #controller .dropdown {
   margin-top: 5px;
   display: grid;

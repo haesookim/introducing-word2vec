@@ -76,6 +76,10 @@ const createNewData = () => {
     let model = modelParameter.options[modelParameter.selectedIndex].value;
     let theme = "country";
 
+    document.getElementById("sizeparam").innerHTML = "size = " + size;
+    document.getElementById("windowparam").innerHTML = "window = " + window;
+    document.getElementById("modelparam").innerHTML = "sg = " + model;
+
     datastring = theme + "_" + size + "_" + window + "_" + model + ".csv";
 
     d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
