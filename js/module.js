@@ -14,6 +14,7 @@ let tooltip = d3
     .select("#display")
     .append("div")
     .style("opacity", 0)
+    .style("z-index", 100)
     .attr("class", "tooltip")
     .style("background-color", "white")
     .style("position", "absolute")
@@ -94,17 +95,17 @@ const createNewData = () => {
     //     drawdata(data);
     // });
     d3.csv("./../data/" + datastring, function (data) {
-        d3.select("#display").select("svg").remove().exit();
-        svg = d3
-            .select("#display")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .append("g");
-        drawdata(data);
-        //d3.select("#display").select("svg").selectAll("circle").data()
+        svg.selectAll("circle")
+            .data(data)
+            .transition() // Transition from old to new
+            .duration(1000)
+            .attr("cx", function (d) {
+                return x(d.x);
+            })
+            .attr("cy", function (d) {
+                return y(d.y);
+            });
     });
-
     clearPair();
 };
 
@@ -223,7 +224,7 @@ const selectNode = (input, tip) => {
             if (d.name.toLowerCase() == input.toLowerCase()) {
                 tip.style("opacity", 1);
                 tip.html(d.name)
-                    .style("left", x(d.x) + 450 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+                    .style("left", x(d.x) + 450 + "px")
                     .style("top", y(d.y) + 40 + "px");
                 return 10;
             } else if (pair.indexOf(d.name) != -1) {
