@@ -37,31 +37,56 @@
 
 <body>
     <main>
-        <div class="section" id="interactive">
+        <div id="interactive">
             <div id="left">
                 <div id="contents">
                     <div id="menu">
-                        <button id="menubutton" onclick="openMenu()">
+                        <button id="menu-close" onclick="openMenu()">
                             <i class="fa fa-times" aria-hidden="true"></i>
                         </button>
+                        <div class="menuitem" onclick="showSection(0)">
+                            - Definition of Word2Vec
+                        </div>
+                        <div class="menuitem" onclick="showSection(1)">
+                            - Where to use Word2Vec
+                        </div>
+                        <div class="menuitem" onclick="showSection(2)">
+                            - How to use
+                        </div>
                     </div>
                     <button id="menubutton" onclick="openMenu()">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                     </button>
+                    <div class="section">
+                        <div class="title">Definition of Word2Vec</div>
+                        <div class="bodytext">
+                            Word2Vec takes a large corpus of text as its input
+                            and produces a vector. Each word in the corpus
+                            correspond to a vector that is different from one
+                            another. People convert words to vectors for
+                            convenience of applying mathematical operations,
+                            e.g., you can easily subtract or add “words” in the
+                            form of vectors. Word2Vec uses shallow, two-layer
+                            neural networks trained from contexts of corpus
+                            words to create these vectors.
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="title">Where to use</div>
+                        <div class="bodytext"></div>
+                    </div>
+                    <div class="section selected">
+                        <div class="title">How to use</div>
+                        <div class="bodytext">
+                            Hover on each point to see the word it represents,
+                            and click a pair of words to compare it in the
+                            vector space.Use the parameter controls below to see
+                            how the values change.
 
-                    <div class="title">How to use</div>
-                    <div class="bodytext">
-                        You can change the following parameters:
-                        <br /><b>Size</b>, the dimension of the output vector
-                        space, <b>Window size</b>, the unit of input that is
-                        used for training, and <b>Training model</b>, the model
-                        used for the training data. Use the parameter controls
-                        below to see how the values change.
-
-                        <br />
-                        <br />
-                        Hover on each point to see the word it represents, and
-                        click a pair of words to compare it in the vector space.
+                            <br />
+                            <br />
+                            The data is created through~
+                        </div>
                     </div>
                 </div>
                 <div id="controller">
@@ -81,7 +106,9 @@
                             <option value="100">100</option>
                             <option value="200">200</option>
                         </select>
-                        <div class="infobutton">i</div>
+                        <div class="infobutton">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                        </div>
                     </div>
                     <div class="dropdown">
                         <label for="window">Window Size:</label>
@@ -95,7 +122,9 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                        <div class="infobutton">i</div>
+                        <div class="infobutton">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                        </div>
                     </div>
 
                     <div class="dropdown">
@@ -109,7 +138,9 @@
                             <option value="0">CBOW</option>
                             <option value="1">Skip-gram</option>
                         </select>
-                        <div class="infobutton">i</div>
+                        <div class="infobutton">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                        </div>
                     </div>
                     <div id="code-wrapper">
                         Code Snippet:

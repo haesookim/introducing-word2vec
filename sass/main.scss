@@ -69,6 +69,28 @@ main {
                     width: 0;
                     overflow: hidden;
                     transition: all ease-in-out 0.3s;
+                    padding: 20px 0;
+                    overflow: hidden;
+                    .menuitem {
+                        cursor: pointer;
+                        color: white;
+                        overflow: hidden;
+                        width: 300px;
+                    }
+                    #menu-close {
+                        position: relative;
+                        left: 280px;
+                        border: none;
+                        background: none;
+                        color: white;
+                        font-size: 24px;
+                    }
+                }
+                .section {
+                    display: none;
+                    &.selected {
+                        display: block;
+                    }
                 }
             }
             #controller {
@@ -98,18 +120,12 @@ main {
                     align-items: stretch;
                     grid-template-columns: 120px auto 35px;
                     .infobutton {
-                        width: 22px;
-                        height: 22px;
-                        padding: 2px;
                         margin: 1px 5px;
-                        text-align: center;
-                        background-color: black;
-                        color: white;
-                        border-radius: 100%;
+                        font-size: 20px;
 
                         cursor: pointer;
                         &:hover {
-                            background-color: rgb(68, 68, 68);
+                            color: rgb(100, 100, 100);
                         }
                     }
                 }

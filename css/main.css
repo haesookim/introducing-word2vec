@@ -68,6 +68,28 @@ main #interactive #left #contents #menu {
   width: 0;
   overflow: hidden;
   transition: all ease-in-out 0.3s;
+  padding: 20px 0;
+  overflow: hidden;
+}
+main #interactive #left #contents #menu .menuitem {
+  cursor: pointer;
+  color: white;
+  overflow: hidden;
+  width: 300px;
+}
+main #interactive #left #contents #menu #menu-close {
+  position: relative;
+  left: 280px;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 24px;
+}
+main #interactive #left #contents .section {
+  display: none;
+}
+main #interactive #left #contents .section.selected {
+  display: block;
 }
 main #interactive #left #controller {
   border: 1px solid darkgray;
@@ -97,18 +119,12 @@ main #interactive #left #controller .dropdown {
   grid-template-columns: 120px auto 35px;
 }
 main #interactive #left #controller .dropdown .infobutton {
-  width: 22px;
-  height: 22px;
-  padding: 2px;
   margin: 1px 5px;
-  text-align: center;
-  background-color: black;
-  color: white;
-  border-radius: 100%;
+  font-size: 20px;
   cursor: pointer;
 }
 main #interactive #left #controller .dropdown .infobutton:hover {
-  background-color: #444444;
+  color: #646464;
 }
 main #interactive #display {
   display: flex;

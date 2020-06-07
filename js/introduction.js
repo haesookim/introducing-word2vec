@@ -15,60 +15,6 @@ const onClickQuizButton = () => {
     answerbox.style.opacity = "100%";
 };
 
-// Interactive Architecture test
-const onClickArchitectureButton = () => {
-    let sentence = document.getElementById("architecture-interactive").value;
-    let parent = document.getElementById("architecture-output");
-    let parsed = sentence.split(" ");
-    parent.innerHTML = "";
-
-    for (i = 0; i < parsed.length; i++) {
-        let tempword = document.createElement("div");
-
-        tempword.className = "parsedword";
-        tempword.innerHTML = parsed[i];
-
-        tempword.addEventListener("click", () => {
-            console.log(this);
-            this.style.backgroundColor = "black";
-        });
-        parent.appendChild(tempword);
-    }
-};
-
-// keyterms popup logic
-
-let keyterms = document.getElementsByClassName("keyterm");
-let popup = document.getElementById("popup");
-let isPopupOpen = false;
-
-let keytermDict = {
-    "word-embeddings": "Mapping words or features to vectors of real numbers",
-};
-
-for (i = 0; i < keyterms.length; i++) {
-    //disabled jumpy hover code for now
-
-    keyterms[i].addEventListener("click", function (event) {
-        isPopupOpen = !isPopupOpen;
-        if (isPopupOpen) {
-            popup.style.display = "block";
-            let currentTerm = this.innerHTML;
-            popup.querySelector("#title").innerHTML = currentTerm;
-            popup.querySelector("#explanation").innerHTML =
-                keytermDict[currentTerm];
-            popup.style.top = window.pageYOffset + event.clientY + "px";
-            popup.style.left = event.clientX + "px";
-        } else {
-            closePopup();
-        }
-    });
-}
-
-const closePopup = () => {
-    popup.style.display = "none";
-};
-
 // Menu visualizing logic
 let menu = document.getElementById("menu");
 let menuOpen = false;
@@ -77,12 +23,25 @@ const openMenu = () => {
     console.log("?");
     if (menuOpen) {
         menu.style.width = "0";
+        menu.style.padding = "20px 0";
     } else {
         menu.style.width = "342px";
+        menu.style.padding = "20px";
     }
     menuOpen = !menuOpen;
 };
 
-// Menu scroll to position logic
+// Menu display each section logic
+let menuSections = document.getElementsByClassName("section");
+let menuItems = document.getElementsByClassName("menuitem");
 
-//
+const showSection = (num) => {
+    for (i = 0; i < menuSections.length; i++) {
+        if (num == i) {
+            menuSections[i].style.display = "block";
+        } else {
+            menuSections[i].style.display = "none";
+        }
+    }
+    openMenu();
+};

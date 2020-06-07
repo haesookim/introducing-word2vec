@@ -101,7 +101,7 @@ const createNewData = () => {
             .attr("r", 5)
             .transition() // Transition from old to new
             .duration(700)
-            .style("fill", "#FC7753dd")
+            .style("fill", "#7EBDC3dd")
             .attr("cx", function (d) {
                 return x(d.x);
             })
