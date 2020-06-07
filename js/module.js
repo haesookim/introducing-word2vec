@@ -19,7 +19,7 @@ let tooltip = d3
     .style("position", "absolute")
     .style("border", "solid 1px black")
     .style("border-radius", "4px")
-    .style("padding", "10px");
+    .style("padding", "5px 10px");
 
 let tooltip_select1 = d3
     .select("#display")
@@ -30,7 +30,7 @@ let tooltip_select1 = d3
     .style("position", "absolute")
     .style("border", "solid 1px black")
     .style("border-radius", "4px")
-    .style("padding", "10px");
+    .style("padding", "5px 10px");
 
 let tooltip_select2 = d3
     .select("#display")
@@ -41,7 +41,7 @@ let tooltip_select2 = d3
     .style("position", "absolute")
     .style("border", "solid 1px black")
     .style("border-radius", "4px")
-    .style("padding", "10px");
+    .style("padding", "5px 10px");
 
 //selecting a pair of point for comparison
 let pair = [null, null];
@@ -78,9 +78,8 @@ const createNewData = () => {
 
     datastring = theme + "_" + size + "_" + window + "_" + model + ".csv";
 
-    //d3.csv("./../introducing-word2vec/data/" + datastring, function (data) { // use when deploying to github pages
-
-    d3.csv("./../data/" + datastring, function (data) {
+    d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+        // use when deploying to github pages
         d3.select("#display").select("svg").remove().exit();
         svg = d3
             .select("#display")
@@ -90,6 +89,16 @@ const createNewData = () => {
             .append("g");
         drawdata(data);
     });
+    // d3.csv("./../data/" + datastring, function (data) {
+    //     d3.select("#display").select("svg").remove().exit();
+    //     svg = d3
+    //         .select("#display")
+    //         .append("svg")
+    //         .attr("width", width)
+    //         .attr("height", height)
+    //         .append("g");
+    //     drawdata(data);
+    // });
 };
 
 // Reusable chart drawing code for when the data source changes
@@ -122,7 +131,7 @@ let drawdata = (data) => {
                 tooltip
                     .html(d.name)
                     .style("left", d3.mouse(this)[0] + 450 + "px")
-                    .style("top", d3.mouse(this)[1] + 30 + "px");
+                    .style("top", d3.mouse(this)[1] + 40 + "px");
             }
         })
         .on("mouseleave", function (d) {
@@ -147,6 +156,9 @@ let drawdata = (data) => {
                 pair[0] = d.name;
             } else if (pair[1] == null) {
                 pair[1] = d.name;
+            } else if (pair[1] != null) {
+                pair = [null, null];
+                pair[0] = d.name;
             }
 
             if (pair[0] != null) {
@@ -203,7 +215,7 @@ const selectNode = (input, tip) => {
             tip.style("opacity", 1);
             tip.html(d.name)
                 .style("left", x(d.x) + 450 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-                .style("top", y(d.y) + 30 + "px");
+                .style("top", y(d.y) + 40 + "px");
             return 10;
         } else if (pair.indexOf(d.name) != -1) {
             return 10;
@@ -213,8 +225,10 @@ const selectNode = (input, tip) => {
     });
 };
 // temporary data code
-//d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
-
-d3.csv("./../data/" + datastring, function (data) {
+d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
     drawdata(data);
 });
+
+// d3.csv("./../data/" + datastring, function (data) {
+//     drawdata(data);
+// });

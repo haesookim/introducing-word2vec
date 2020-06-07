@@ -112,6 +112,22 @@ main #interactive #display #search {
   left: 440px;
   top: 60px;
 }
+main #interactive #display #search input {
+  background: none;
+  border: none;
+  border: 1px gray solid;
+  padding: 5px 10px;
+  padding-right: 20px;
+  font-size: 16px;
+}
+main #interactive #display #search button {
+  background: none;
+  border: none;
+  position: relative;
+  left: -35px;
+  cursor: pointer;
+  font-size: 16px;
+}
 main #interactive #display svg {
   justify-content: center;
   width: 90%;
@@ -120,6 +136,9 @@ main #interactive #display svg {
 }
 main #interactive #display svg circle {
   cursor: pointer;
+}
+main #interactive #display .tooltip {
+  font-size: 12px;
 }
 main #interactive #secondaryview {
   background-color: rgba(0, 0, 0, 0.9);
