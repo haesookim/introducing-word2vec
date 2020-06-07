@@ -163,7 +163,7 @@ const trackSearch = (e) => {
 const searchForTerm = () => {
     let input = inputform.value.toLowerCase().trim();
     svg.selectAll("circle").attr("r", function (d) {
-        if (d.name == input) {
+        if (d.name.toLowerCase() == input) {
             tooltip.style("opacity", 1);
             tooltip
                 .html(d.name)
