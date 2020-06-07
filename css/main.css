@@ -2,17 +2,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Noto Sans KR", sans-serif;
-  background-color: #fff7e0;
-}
-
-.contents {
-  background: rgba(0, 0, 0, 0.9);
-  height: 100vh;
-  width: 200px;
-  position: absolute;
-  z-index: 101;
-  color: white;
-  display: none;
 }
 
 main {
@@ -28,6 +17,21 @@ main #interactive {
   grid-template-columns: 400px 1fr;
   z-index: 100;
 }
+main #interactive .title {
+  font-size: 24px;
+  font-weight: 700;
+}
+main #interactive .subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  color: gray;
+  margin-bottom: 15px;
+}
+main #interactive .bodytext {
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 15px;
+}
 main #interactive #left {
   display: grid;
   grid-template-rows: 1fr 400px;
@@ -35,18 +39,35 @@ main #interactive #left {
 main #interactive #left #contents {
   padding: 10px 20px;
   margin-top: 50px;
+  min-height: 348px;
   margin-left: 58px;
   border: 1px solid darkgray;
   align-self: stretch;
   justify-self: stretch;
+  overflow: hidden;
+  position: relative;
 }
 main #interactive #left #contents #menubutton {
   background: rgba(0, 0, 0, 0.9);
   border: none;
   display: block;
   border-radius: 3px;
+  margin: 5px 0;
+  z-index: 10;
   font-size: 24px;
   color: white;
+  cursor: pointer;
+}
+main #interactive #left #contents #menu {
+  background: rgba(0, 0, 0, 0.9);
+  border: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 0;
+  overflow: hidden;
+  transition: all ease-in-out 0.3s;
 }
 main #interactive #left #controller {
   border: 1px solid darkgray;
@@ -89,22 +110,12 @@ main #interactive #left #controller .dropdown .infobutton {
 main #interactive #left #controller .dropdown .infobutton:hover {
   background-color: #444444;
 }
-main #interactive #left #controller .title {
-  font-size: 24px;
-  font-weight: 700;
-}
-main #interactive #left #controller .subtitle {
-  font-size: 14px;
-  font-weight: 300;
-  color: gray;
-  margin-bottom: 15px;
-}
 main #interactive #display {
   display: flex;
   align-self: end;
-  width: 95%;
   height: 90vh;
-  margin: 0 auto 30px;
+  min-height: 740px;
+  margin: 0 58px 30px 10px;
   border: 1px solid darkgray;
 }
 main #interactive #display #search {

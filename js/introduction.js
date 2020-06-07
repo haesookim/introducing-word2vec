@@ -71,13 +71,16 @@ const closePopup = () => {
 
 // Menu visualizing logic
 let menu = document.getElementById("menu");
+let menuOpen = false;
 
 const openMenu = () => {
-    menu.style.display = "block";
-};
-
-const closeMenu = () => {
-    menu.style.display = "none";
+    console.log("?");
+    if (menuOpen) {
+        menu.style.width = "0";
+    } else {
+        menu.style.width = "342px";
+    }
+    menuOpen = !menuOpen;
 };
 
 // Menu scroll to position logic

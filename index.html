@@ -40,17 +40,29 @@
         <div class="section" id="interactive">
             <div id="left">
                 <div id="contents">
+                    <div id="menu">
+                        <button id="menubutton" onclick="openMenu()">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
+                    </div>
                     <button id="menubutton" onclick="openMenu()">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                     </button>
 
-                    In our system, you can change following parameters:
-                    <br />Size is the dimension of the output vector space, a
-                    hundred being the most widely used. Window size is the unit
-                    of input that is used for training, five used most
-                    frequently. Training model is the model used for an internal
-                    two-layer neural network, skip-gram model used for better
-                    performance.
+                    <div class="title">How to use</div>
+                    <div class="bodytext">
+                        You can change the following parameters:
+                        <br /><b>Size</b>, the dimension of the output vector
+                        space, <b>Window size</b>, the unit of input that is
+                        used for training, and <b>Training model</b>, the model
+                        used for the training data. Use the parameter controls
+                        below to see how the values change.
+
+                        <br />
+                        <br />
+                        Hover on each point to see the word it represents, and
+                        click a pair of words to compare it in the vector space.
+                    </div>
                 </div>
                 <div id="controller">
                     <div class="title">Parameter Controls</div>

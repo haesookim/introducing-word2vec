@@ -1,7 +1,7 @@
 /* D3 code to implement the interactive visualization module */
 
 let width = 800,
-    height = 740;
+    height = 660;
 
 let svg = d3
     .select("#display")
@@ -14,13 +14,13 @@ let tooltip = d3
     .select("#display")
     .append("div")
     .style("opacity", 0)
-    .style("z-index", 100)
+    .style("z-index", 70)
     .attr("class", "tooltip")
     .style("background-color", "white")
     .style("position", "absolute")
     .style("border", "solid 1px black")
     .style("border-radius", "4px")
-    .style("padding", "5px 10px");
+    .style("padding", "5px 7px");
 
 let tooltip_select1 = d3
     .select("#display")
@@ -31,7 +31,7 @@ let tooltip_select1 = d3
     .style("position", "absolute")
     .style("border", "solid 1px black")
     .style("border-radius", "4px")
-    .style("padding", "5px 10px");
+    .style("padding", "5px 7px");
 
 let tooltip_select2 = d3
     .select("#display")
@@ -42,14 +42,14 @@ let tooltip_select2 = d3
     .style("position", "absolute")
     .style("border", "solid 1px black")
     .style("border-radius", "4px")
-    .style("padding", "5px 10px");
+    .style("padding", "5px 7px");
 
 //selecting a pair of point for comparison
 let pair = [null, null];
 let selectpoints = (point) => {
     if (pair[0] == null) {
         pair[0] = point;
-        point.attr("r", 10);
+        point.attr("r", 7);
     } else if (pair[1] == null) {
         if (pair[0] == point) {
             pair[0] == null;
@@ -94,11 +94,14 @@ const createNewData = () => {
     //         .append("g");
     //     drawdata(data);
     // });
+    clearPair();
     d3.csv("./../data/" + datastring, function (data) {
         svg.selectAll("circle")
             .data(data)
+            .attr("r", 5)
             .transition() // Transition from old to new
-            .duration(1000)
+            .duration(700)
+            .style("fill", "#FC7753dd")
             .attr("cx", function (d) {
                 return x(d.x);
             })
@@ -106,7 +109,6 @@ const createNewData = () => {
                 return y(d.y);
             });
     });
-    clearPair();
 };
 
 // Reusable chart drawing code for when the data source changes
@@ -131,11 +133,17 @@ let drawdata = (data) => {
             return y(d.y);
         })
         .attr("r", 5)
-        .style("fill", "#69b3a2dd")
+        .style("fill", "#7EBDC3dd")
         .on("mouseover", function (d) {
-            d3.select(this).transition().attr("r", 10);
+            d3.select(this)
+                .transition()
+                .style("fill", "#FC7753dd")
+                .attr("r", 7);
             if (pair[0] !== d.name && pair[1] !== d.name) {
-                tooltip.style("opacity", 1);
+                tooltip
+                    // .transition() // Transition from old to new
+                    // .duration(200)
+                    .style("opacity", 1);
                 tooltip
                     .html(d.name)
                     .style("left", d3.mouse(this)[0] + 450 + "px")
@@ -144,7 +152,10 @@ let drawdata = (data) => {
         })
         .on("mouseleave", function (d) {
             if (pair[0] !== d.name && pair[1] !== d.name) {
-                d3.select(this).transition().attr("r", 5);
+                d3.select(this)
+                    .transition()
+                    .style("fill", "#7EBDC3dd")
+                    .attr("r", 5);
             }
             tooltip.style("opacity", 0);
         })
@@ -198,7 +209,7 @@ const displayWords = () => {
 
 const clearPair = () => {
     pair = [null, null];
-    svg.selectAll("circle").transition().attr("r", 5);
+    svg.selectAll("circle").attr("r", 5).style("fill", "#7EBDC3dd");
     tooltip_select1.style("opacity", 0);
     tooltip_select2.style("opacity", 0);
     secondaryview.style.display = "none";
@@ -219,6 +230,15 @@ const searchForTerm = () => {
 
 const selectNode = (input, tip) => {
     svg.selectAll("circle")
+        .style("fill", function (d) {
+            if (d.name.toLowerCase() == input.toLowerCase()) {
+                return "#FC7753dd";
+            } else if (pair.indexOf(d.name) != -1) {
+                return "#FC7753dd";
+            } else {
+                return "#7EBDC3dd";
+            }
+        })
         .transition()
         .attr("r", function (d) {
             if (d.name.toLowerCase() == input.toLowerCase()) {
@@ -226,9 +246,9 @@ const selectNode = (input, tip) => {
                 tip.html(d.name)
                     .style("left", x(d.x) + 450 + "px")
                     .style("top", y(d.y) + 40 + "px");
-                return 10;
+                return 7;
             } else if (pair.indexOf(d.name) != -1) {
-                return 10;
+                return 7;
             } else {
                 return 5;
             }
