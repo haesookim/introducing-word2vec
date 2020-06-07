@@ -82,18 +82,8 @@ const createNewData = () => {
 
     datastring = theme + "_" + size + "_" + window + "_" + model + ".csv";
 
-    d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
-        // use when deploying to github pages
-        d3.select("#display").select("svg").remove().exit();
-        svg = d3
-            .select("#display")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .append("g");
-        drawdata(data);
-    });
-    // d3.csv("./../data/" + datastring, function (data) {
+    // d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+    //     // use when deploying to github pages
     //     d3.select("#display").select("svg").remove().exit();
     //     svg = d3
     //         .select("#display")
@@ -103,6 +93,19 @@ const createNewData = () => {
     //         .append("g");
     //     drawdata(data);
     // });
+    d3.csv("./../data/" + datastring, function (data) {
+        d3.select("#display").select("svg").remove().exit();
+        svg = d3
+            .select("#display")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g");
+        drawdata(data);
+        //d3.select("#display").select("svg").selectAll("circle").data()
+    });
+
+    clearPair();
 };
 
 // Reusable chart drawing code for when the data source changes
@@ -129,7 +132,7 @@ let drawdata = (data) => {
         .attr("r", 5)
         .style("fill", "#69b3a2dd")
         .on("mouseover", function (d) {
-            d3.select(this).attr("r", 10);
+            d3.select(this).transition().attr("r", 10);
             if (pair[0] !== d.name && pair[1] !== d.name) {
                 tooltip.style("opacity", 1);
                 tooltip
@@ -140,7 +143,7 @@ let drawdata = (data) => {
         })
         .on("mouseleave", function (d) {
             if (pair[0] !== d.name && pair[1] !== d.name) {
-                d3.select(this).attr("r", 5);
+                d3.select(this).transition().attr("r", 5);
             }
             tooltip.style("opacity", 0);
         })
@@ -194,7 +197,7 @@ const displayWords = () => {
 
 const clearPair = () => {
     pair = [null, null];
-    svg.selectAll("circle").attr("r", 5);
+    svg.selectAll("circle").transition().attr("r", 5);
     tooltip_select1.style("opacity", 0);
     tooltip_select2.style("opacity", 0);
     secondaryview.style.display = "none";
@@ -214,25 +217,27 @@ const searchForTerm = () => {
 };
 
 const selectNode = (input, tip) => {
-    svg.selectAll("circle").attr("r", function (d) {
-        if (d.name.toLowerCase() == input.toLowerCase()) {
-            tip.style("opacity", 1);
-            tip.html(d.name)
-                .style("left", x(d.x) + 450 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-                .style("top", y(d.y) + 40 + "px");
-            return 10;
-        } else if (pair.indexOf(d.name) != -1) {
-            return 10;
-        } else {
-            return 5;
-        }
-    });
+    svg.selectAll("circle")
+        .transition()
+        .attr("r", function (d) {
+            if (d.name.toLowerCase() == input.toLowerCase()) {
+                tip.style("opacity", 1);
+                tip.html(d.name)
+                    .style("left", x(d.x) + 450 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+                    .style("top", y(d.y) + 40 + "px");
+                return 10;
+            } else if (pair.indexOf(d.name) != -1) {
+                return 10;
+            } else {
+                return 5;
+            }
+        });
 };
 // temporary data code
-d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
-    drawdata(data);
-});
-
-// d3.csv("./../data/" + datastring, function (data) {
+// d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
 //     drawdata(data);
 // });
+
+d3.csv("./../data/" + datastring, function (data) {
+    drawdata(data);
+});

@@ -5,18 +5,6 @@ body {
   background-color: #fff7e0;
 }
 
-#menubutton {
-  position: fixed;
-  top: 30px;
-  left: 30px;
-  z-index: 101;
-  background: rgba(0, 0, 0, 0.9);
-  border: none;
-  border-radius: 3px;
-  font-size: 32px;
-  color: white;
-}
-
 .contents {
   background: rgba(0, 0, 0, 0.9);
   height: 100vh;
@@ -45,11 +33,20 @@ main #interactive #left {
   grid-template-rows: 1fr 400px;
 }
 main #interactive #left #contents {
+  padding: 10px 20px;
   margin-top: 50px;
   margin-left: 58px;
   border: 1px solid darkgray;
   align-self: stretch;
   justify-self: stretch;
+}
+main #interactive #left #contents #menubutton {
+  background: rgba(0, 0, 0, 0.9);
+  border: none;
+  display: block;
+  border-radius: 3px;
+  font-size: 24px;
+  color: white;
 }
 main #interactive #left #controller {
   border: 1px solid darkgray;
@@ -149,7 +146,20 @@ main #interactive #secondaryview {
   color: white;
   bottom: 30px;
   right: 30px;
+  width: 200px;
+  padding: 20px 10px;
   display: none;
+}
+main #interactive #secondaryview #selection {
+  display: flex;
+}
+main #interactive #secondaryview #selection .selectedword {
+  width: 80px;
+  padding: 5px 10px;
+}
+main #interactive #secondaryview button {
+  margin-left: auto;
+  margin-right: 0;
 }
 
 #popup {
