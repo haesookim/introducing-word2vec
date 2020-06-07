@@ -124,6 +124,7 @@ main #interactive #display svg circle {
 main #interactive #secondaryview {
   background-color: rgba(0, 0, 0, 0.9);
   position: absolute;
+  color: white;
   bottom: 30px;
   right: 30px;
   display: none;

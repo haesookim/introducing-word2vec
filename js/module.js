@@ -26,10 +26,18 @@ let pair = [null, null];
 let selectpoints = (point) => {
     if (pair[0] == null) {
         pair[0] = point;
+        point.attr("r", 10);
     } else if (pair[1] == null) {
-        pair[1] = point;
+        if (pair[0] == point) {
+            pair[0] == null;
+        } else {
+            pair[1] = point;
+        }
     }
     console.log(pair);
+};
+let emptypoints = () => {
+    pair = [null, null];
 };
 
 // selecting a pair of parameters
@@ -66,13 +74,13 @@ const createNewData = () => {
 
 // Reusable chart drawing code for when the data source changes
 
-let drawdata = (data) => {
-    // Add X axis
-    var x = d3.scaleLinear().domain([-0.1, 1.1]).range([0, width]);
-    svg.append("g").attr("transform", "translate(0," + height + ")");
-    // Add Y axis
-    var y = d3.scaleLinear().domain([-0.1, 1.1]).range([height, 0]);
+// Add X axis
+var x = d3.scaleLinear().domain([-0.1, 1.1]).range([0, width]);
+// Add Y axis
+var y = d3.scaleLinear().domain([-0.1, 1.1]).range([height, 0]);
 
+let drawdata = (data) => {
+    svg.append("g").attr("transform", "translate(0," + height + ")");
     // Add dots
     svg.append("g")
         .selectAll("dot")
@@ -92,19 +100,81 @@ let drawdata = (data) => {
             tooltip.style("opacity", 1);
             tooltip
                 .html(d.name)
-                .style("left", d3.mouse(this)[0] + 370 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+                .style("left", d3.mouse(this)[0] + 450 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
                 .style("top", d3.mouse(this)[1] + 30 + "px");
         })
         .on("mouseleave", function (d) {
-            d3.select(this).attr("r", 5);
-            tooltip.style("opacity", 0);
+            if (pair[0] !== d.name && pair[1] !== d.name) {
+                d3.select(this).attr("r", 5);
+                tooltip.style("opacity", 0);
+            }
         })
         .on("click", function (d) {
-            selectpoints(d);
+            //selectpoints(d3.select(this));
+            if (pair[0] == d.name) {
+                if (pair[1] != null) {
+                    pair[0] = pair[1];
+                    pair[1] == null;
+                } else {
+                    pair = [null, null];
+                }
+            } else if (pair[1] == d.name) {
+                pair[1] = null;
+            } else if (pair[0] == null) {
+                pair[0] = d.name;
+            } else if (pair[1] == null) {
+                pair[1] = d.name;
+            }
+
+            if (pair[0] != null) {
+                secondaryview.style.display = "block";
+            } else {
+                secondaryview.style.display = "none";
+            }
+
+            if (pair[1] != null) {
+            }
+            console.log(pair);
             //comparison function
+            displayWords();
         });
 };
 
+let secondaryview = document.getElementById("secondaryview");
+let words = document.getElementsByClassName("selectedword");
+
+const displayWords = () => {
+    words[0].innerHTML = pair[0];
+    words[1].innerHTML = pair[1];
+};
+
+const clearPair = () => {
+    pairs = [null, null];
+};
+
+let inputform = document.getElementById("searchinput");
+
+const trackSearch = (e) => {
+    if (e.keyCode == 13) {
+        searchForTerm();
+    }
+};
+
+const searchForTerm = () => {
+    let input = inputform.value.toLowerCase().trim();
+    svg.selectAll("circle").attr("r", function (d) {
+        if (d.name == input) {
+            tooltip.style("opacity", 1);
+            tooltip
+                .html(d.name)
+                .style("left", x(d.x) + 450 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+                .style("top", y(d.y) + 30 + "px");
+            return 10;
+        } else {
+            return 5;
+        }
+    });
+};
 // temporary data code
 //d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
 

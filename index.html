@@ -103,13 +103,22 @@
             </div>
             <div id="display">
                 <div id="search">
-                    <input placeholder="Search for a word..." />
-                    <button>Search</button>
+                    <input
+                        id="searchinput"
+                        placeholder="Search for a word..."
+                        onkeydown="trackSearch(event)"
+                    />
+                    <button onclick="searchForTerm()">
+                        Search
+                    </button>
                 </div>
             </div>
             <div id="secondaryview">
-                <div id="selection"></div>
-                <button>Clear selection</button>
+                <div id="selection">
+                    <div class="selectedword"></div>
+                    <div class="selectedword"></div>
+                </div>
+                <button onclick="clearPair()">Clear selection</button>
             </div>
         </div>
     </main>
