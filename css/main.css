@@ -41,6 +41,7 @@ main #interactive #left #contents {
   margin-top: 50px;
   min-height: 348px;
   margin-left: 58px;
+  width: 300px;
   border: 1px solid darkgray;
   align-self: stretch;
   justify-self: stretch;
@@ -92,16 +93,22 @@ main #interactive #left #contents .section.selected {
   display: block;
 }
 main #interactive #left #controller {
+  display: flex;
+  overflow: visible;
+}
+main #interactive #left #controller #controller-wrapper {
   border: 1px solid darkgray;
   align-self: stretch;
   justify-self: right;
+  width: 300px;
   margin: 10px 0 30px 58px;
   padding: 10px 20px 0;
+  flex-shrink: 0;
 }
-main #interactive #left #controller #code-wrapper {
+main #interactive #left #controller #controller-wrapper #code-wrapper {
   margin-top: 30px;
 }
-main #interactive #left #controller #code-wrapper #code-snippet {
+main #interactive #left #controller #controller-wrapper #code-wrapper #code-snippet {
   font-family: "Roboto Mono", monospace;
   background-color: #222222;
   color: white;
@@ -109,22 +116,37 @@ main #interactive #left #controller #code-wrapper #code-snippet {
   font-size: 12px;
   margin-top: 5px;
 }
-main #interactive #left #controller #code-wrapper #code-snippet span {
+main #interactive #left #controller #controller-wrapper #code-wrapper #code-snippet span {
   color: yellow;
 }
-main #interactive #left #controller .dropdown {
+main #interactive #left #controller #controller-wrapper .dropdown {
   margin-top: 5px;
   display: grid;
   align-items: stretch;
   grid-template-columns: 120px auto 35px;
 }
-main #interactive #left #controller .dropdown .infobutton {
+main #interactive #left #controller #controller-wrapper .dropdown .infobutton {
   margin: 1px 5px;
   font-size: 20px;
   cursor: pointer;
 }
-main #interactive #left #controller .dropdown .infobutton:hover {
+main #interactive #left #controller #controller-wrapper .dropdown .infobutton:hover {
   color: #646464;
+}
+main #interactive #left #controller #param-def {
+  position: relative;
+  padding: 10px 0;
+  margin: 10px 0 30px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 0px;
+  overflow: hidden;
+  transition: all ease-in-out 0.3s;
+}
+main #interactive #left #controller #param-def #closedef {
+  position: absolute;
+  top: 170px;
+  left: 310px;
 }
 main #interactive #display {
   display: flex;

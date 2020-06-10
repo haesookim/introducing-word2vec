@@ -84,8 +84,8 @@ const createNewData = () => {
     datastring = theme + "_" + size + "_" + window + "_" + model + ".csv";
 
     clearPair();
-    // d3.csv("./../data/" + datastring, function (data) {
-    d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+    d3.csv("./../data/" + datastring, function (data) {
+        //d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
         svg.selectAll("circle")
             .data(data)
             .attr("r", 5)
@@ -245,10 +245,10 @@ const selectNode = (input, tip) => {
         });
 };
 // temporary data code
-d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
-    drawdata(data);
-});
-
-// d3.csv("./../data/" + datastring, function (data) {
+// d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
 //     drawdata(data);
 // });
+
+d3.csv("./../data/" + datastring, function (data) {
+    drawdata(data);
+});

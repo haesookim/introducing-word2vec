@@ -90,67 +90,83 @@
                     </div>
                 </div>
                 <div id="controller">
-                    <div class="title">Parameter Controls</div>
-                    <div class="subtitle">
-                        Select a combination of parameters and see how the
-                        vector embedding result changes
-                    </div>
-                    <div class="dropdown">
-                        <label for="size">Size:</label>
-                        <select
-                            name="size"
-                            id="size"
-                            onchange="createNewData()"
-                        >
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                            <option value="200">200</option>
-                        </select>
-                        <div class="infobutton">
-                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <div id="controller-wrapper">
+                        <div class="title">Parameter Controls</div>
+                        <div class="subtitle">
+                            Select a combination of parameters and see how the
+                            vector embedding result changes
                         </div>
-                    </div>
-                    <div class="dropdown">
-                        <label for="window">Window Size:</label>
-                        <select
-                            name="window"
-                            id="window"
-                            onchange="createNewData()"
-                        >
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                        <div class="infobutton">
-                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                        <div class="dropdown">
+                            <label for="size">Size:</label>
+                            <select
+                                name="size"
+                                id="size"
+                                onchange="createNewData()"
+                            >
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                            </select>
+                            <div class="infobutton">
+                                <i
+                                    class="fa fa-info-circle"
+                                    aria-hidden="true"
+                                ></i>
+                            </div>
                         </div>
-                    </div>
+                        <div class="dropdown">
+                            <label for="window">Window Size:</label>
+                            <select
+                                name="window"
+                                id="window"
+                                onchange="createNewData()"
+                            >
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <div class="infobutton">
+                                <i
+                                    class="fa fa-info-circle"
+                                    aria-hidden="true"
+                                ></i>
+                            </div>
+                        </div>
 
-                    <div class="dropdown">
-                        <label for="model">Training Model:</label>
+                        <div class="dropdown">
+                            <label for="model">Training Model:</label>
 
-                        <select
-                            name="model"
-                            id="model"
-                            onchange="createNewData()"
-                        >
-                            <option value="0">CBOW</option>
-                            <option value="1">Skip-gram</option>
-                        </select>
-                        <div class="infobutton">
-                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <select
+                                name="model"
+                                id="model"
+                                onchange="createNewData()"
+                            >
+                                <option value="0">CBOW</option>
+                                <option value="1">Skip-gram</option>
+                            </select>
+                            <div class="infobutton">
+                                <i
+                                    class="fa fa-info-circle"
+                                    aria-hidden="true"
+                                ></i>
+                            </div>
+                        </div>
+                        <div id="code-wrapper">
+                            Code Snippet:
+                            <div id="code-snippet">
+                                Model = Word2Vec(corpus,
+                                <span id="sizeparam">size = 50</span>,
+                                <span id="windowparam">window = 2</span>,
+                                min_count = min_count, workers = workers,
+                                <span id="modelparam">sg = 0</span>)
+                            </div>
                         </div>
                     </div>
-                    <div id="code-wrapper">
-                        Code Snippet:
-                        <div id="code-snippet">
-                            Model = Word2Vec(corpus,
-                            <span id="sizeparam">size = 50</span>,
-                            <span id="windowparam">window = 2</span>, min_count
-                            = min_count, workers = workers,
-                            <span id="modelparam">sg = 0</span>)
-                        </div>
+                    <div id="param-def">
+                        <div class="title">dd</div>
+                        <div class="content">dd</div>
+                        <button id="closedef" onclick="closeDef()"></button>
                     </div>
                 </div>
             </div>
@@ -196,7 +212,7 @@
 
     <!-- Javascript -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="./js/introduction.js"></script>
+    <script src="./js/parameters.js"></script>
     <script src="./js/table.js"></script>
     <script src="./js/module.js"></script>
 </body>
