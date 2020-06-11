@@ -44,8 +44,31 @@ let tooltip_select2 = d3
     .style("border-radius", "4px")
     .style("padding", "5px 7px");
 
+let colorbyCase = (d) => {
+    switch (d.cluster) {
+        case "1":
+            return "#805D93dd";
+        case "2":
+            return "#F49FBCdd";
+        case "3":
+            return "#FFD3BAdd";
+        case "4":
+            return "#9EBD6Edd";
+        case "5":
+            return "#169873dd";
+        case "6":
+            return "#3DA5D9dd";
+        case "7":
+            return "#73BFB8dd";
+        case "8":
+            return "#7EBDC3dd";
+    }
+};
+
 //selecting a pair of point for comparison
 let pair = [null, null];
+let coordsPair = [];
+
 let selectpoints = (point) => {
     if (pair[0] == null) {
         pair[0] = point;
@@ -59,8 +82,22 @@ let selectpoints = (point) => {
     }
     console.log(pair);
 };
+
 let emptypoints = () => {
     pair = [null, null];
+};
+
+let drawLine = (point1, point2) => {
+    svg.append("line")
+        .style("stroke", "black")
+        .attr("x1", x(coordsPair[point1][0]))
+        .attr("y1", y(coordsPair[point1][1]))
+        .attr("x2", x(coordsPair[point2][0]))
+        .attr("y2", y(coordsPair[point2][1]));
+};
+
+let clearLine = () => {
+    svg.selectAll("line").remove();
 };
 
 // selecting a pair of parameters
@@ -69,19 +106,18 @@ let sizeParameter = document.getElementById("size");
 let windowParameter = document.getElementById("window");
 let modelParameter = document.getElementById("model");
 
-let datastring = "country_50_2_0.csv";
+let datastring = "50_2_0.csv";
 
 const createNewData = () => {
     let size = sizeParameter.options[sizeParameter.selectedIndex].value;
     let window = windowParameter.options[windowParameter.selectedIndex].value;
     let model = modelParameter.options[modelParameter.selectedIndex].value;
-    let theme = "country";
 
     document.getElementById("sizeparam").innerHTML = "size = " + size;
     document.getElementById("windowparam").innerHTML = "window = " + window;
     document.getElementById("modelparam").innerHTML = "sg = " + model;
 
-    datastring = theme + "_" + size + "_" + window + "_" + model + ".csv";
+    datastring = size + "_" + window + "_" + model + ".csv";
 
     clearPair();
     d3.csv("./../data/" + datastring, function (data) {
@@ -91,7 +127,9 @@ const createNewData = () => {
             .attr("r", 5)
             .transition() // Transition from old to new
             .duration(700)
-            .style("fill", "#7EBDC3dd")
+            .style("fill", function (d) {
+                return colorbyCase(d);
+            })
             .attr("cx", function (d) {
                 return x(d.x);
             })
@@ -123,7 +161,9 @@ let drawdata = (data) => {
             return y(d.y);
         })
         .attr("r", 5)
-        .style("fill", "#7EBDC3dd")
+        .style("fill", function (d) {
+            return colorbyCase(d);
+        })
         .on("mouseover", function (d) {
             d3.select(this)
                 .transition()
@@ -144,7 +184,9 @@ let drawdata = (data) => {
             if (pair[0] !== d.name && pair[1] !== d.name) {
                 d3.select(this)
                     .transition()
-                    .style("fill", "#7EBDC3dd")
+                    .style("fill", function (d) {
+                        return colorbyCase(d);
+                    })
                     .attr("r", 5);
             }
             tooltip.style("opacity", 0);
@@ -199,6 +241,7 @@ const displayWords = () => {
 
 const clearPair = () => {
     pair = [null, null];
+    coordsPair = [];
     svg.selectAll("circle").attr("r", 5).style("fill", "#7EBDC3dd");
     tooltip_select1.style("opacity", 0);
     tooltip_select2.style("opacity", 0);
@@ -219,14 +262,16 @@ const searchForTerm = () => {
 };
 
 const selectNode = (input, tip) => {
+    console.log("??");
     svg.selectAll("circle")
         .style("fill", function (d) {
             if (d.name.toLowerCase() == input.toLowerCase()) {
+                coordsPair.push([d.x, d.y]);
                 return "#FC7753dd";
             } else if (pair.indexOf(d.name) != -1) {
                 return "#FC7753dd";
             } else {
-                return "#7EBDC3dd";
+                return colorbyCase(d);
             }
         })
         .transition()

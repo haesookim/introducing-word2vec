@@ -48,9 +48,12 @@
                             - Definition of Word2Vec
                         </div>
                         <div class="menuitem" onclick="showSection(1)">
-                            - Where to use Word2Vec
+                            - What are Relationship Vectors?
                         </div>
                         <div class="menuitem" onclick="showSection(2)">
+                            - Where to use Word2Vec
+                        </div>
+                        <div class="menuitem" onclick="showSection(3)">
                             - How to use
                         </div>
                     </div>
@@ -72,6 +75,19 @@
                         </div>
                     </div>
                     <div class="section">
+                        <div class="title">What are Relationship vectors?</div>
+                        <div class="bodytext">
+                            Here's one very intuitive way to see how Word2Vec
+                            works. Look at the highlighted words on the right.
+                            The distance between 'Korea' and 'Seoul' is same as
+                            that of 'Japan' and 'Tokyo'. Their relationship is
+                            country-capital.
+                            <a onclick="showSection(4)"
+                                >Want some more examples?</a
+                            >
+                        </div>
+                    </div>
+                    <div class="section">
                         <div class="title">Where to use</div>
                         <div class="bodytext"></div>
                     </div>
@@ -86,6 +102,14 @@
                             <br />
                             <br />
                             The data is created through~
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="title">What are Relationship vectors?</div>
+                        <div class="bodytext">
+                            How about this? The distance between 'man' and
+                            'actor' is same as that of 'woman' and 'actress'.
+                            Their relationship is gender-job.
                         </div>
                     </div>
                 </div>
@@ -212,7 +236,7 @@
 
     <!-- Javascript -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="./js/parameters.js"></script>
-    <script src="./js/table.js"></script>
     <script src="./js/module.js"></script>
+    <script src="./js/parameters.js"></script>
+    <script src="./js/introduction.js"></script>
 </body>
