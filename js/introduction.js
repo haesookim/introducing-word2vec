@@ -78,7 +78,9 @@ let ex_tip4 = d3
     .style("border-radius", "4px")
     .style("padding", "5px 7px");
 
+let switchData = false;
 const showSection = (num) => {
+    closeDef();
     for (i = 0; i < menuSections.length; i++) {
         if (num == i) {
             menuSections[i].style.display = "block";
@@ -86,10 +88,16 @@ const showSection = (num) => {
             menuSections[i].style.display = "none";
         }
     }
+    if (switchData) {
+        clearSVG();
+        datastring = "50_2_0.csv";
+        d3.csv("./../data/" + datastring, function (data) {
+            drawdata(data);
+        });
+        switchData = false;
+    }
 
     if (num == 1) {
-        // datastring = "50_2_0.csv";
-        // createNewData();
         clearPair();
         clearLine();
         selectNode("korea", ex_tip);
@@ -107,6 +115,7 @@ const showSection = (num) => {
         searchByTerm("batman", ex_tip2);
         //drawLine(0, 1);
         openMenu();
+        switchData = true;
     } else if (num == 4) {
         clearPair();
         clearLine();
@@ -125,8 +134,9 @@ const showSection = (num) => {
     if (num != 3) {
         disableParameters();
     } else {
-        enableParameters();
+        overlay.style.display = "none";
     }
+    prevnum = num;
 };
 
 let overlay = document.getElementById("disabled-overlay");
@@ -136,4 +146,6 @@ const disableParameters = () => {
 
 const enableParameters = () => {
     overlay.style.display = "none";
+    showSection(3);
+    openMenu();
 };

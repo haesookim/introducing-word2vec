@@ -137,7 +137,7 @@
                                 <option value="100">100</option>
                                 <option value="200">200</option>
                             </select>
-                            <div class="infobutton">
+                            <div class="infobutton" onclick="openDef(0)">
                                 <i
                                     class="fa fa-info-circle"
                                     aria-hidden="true"
@@ -156,7 +156,7 @@
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                             </select>
-                            <div class="infobutton">
+                            <div class="infobutton" onclick="openDef(1)">
                                 <i
                                     class="fa fa-info-circle"
                                     aria-hidden="true"
@@ -175,7 +175,7 @@
                                 <option value="0">CBOW</option>
                                 <option value="1">Skip-gram</option>
                             </select>
-                            <div class="infobutton">
+                            <div class="infobutton" onclick="openDef(2)">
                                 <i
                                     class="fa fa-info-circle"
                                     aria-hidden="true"
@@ -194,9 +194,13 @@
                         </div>
                     </div>
                     <div id="param-def">
-                        <div class="title">Selected Term</div>
-                        <div class="content">relevant definition</div>
-                        <button id="closedef" onclick="closeDef()"></button>
+                        <div id="paramtitle" class="title">Selected Term</div>
+                        <div id="paramtext" class="content">
+                            relevant definition
+                        </div>
+                        <button id="closedef" onclick="closeDef()">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
                     </div>
                     <div id="disabled-overlay" onclick="enableParameters()">
                         <button>Click to return to interactive Mode</button>
@@ -225,19 +229,6 @@
             </div>
         </div>
     </main>
-    <div id="popup">
-        <button id="close" onclick="closePopup()">X</button>
-        <div class="content">
-            <div id="title">Key term</div>
-            <div id="explanation">Definition or explanation of key term</div>
-        </div>
-    </div>
-    <div class="progressbar">
-        <div class="progress-box"></div>
-        <div class="progress-box"></div>
-        <div class="progress-box"></div>
-        <div class="progress-box"></div>
-    </div>
     <!-- <footer>
 		2020 Spring SNU Human-Computer Interaction </br>
 		&copy; Sunhong, Haesoo

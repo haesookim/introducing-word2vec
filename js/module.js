@@ -111,6 +111,7 @@ const createNewData = () => {
         //d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
         svg.selectAll("circle")
             .data(data)
+            .enter()
             .attr("r", 5)
             .transition() // Transition from old to new
             .duration(700)
@@ -122,11 +123,20 @@ const createNewData = () => {
             })
             .attr("cy", function (d) {
                 return y(d.y);
-            });
+            })
+            .exit();
     });
 };
 
 const drawWithMovieData = () => {
+    clearSVG();
+
+    d3.csv("./../data/movie2vec/movie2vec_57.csv", function (data) {
+        drawdata(data);
+    });
+};
+
+const clearSVG = () => {
     d3.select("#display").select("svg").remove().exit();
     svg = d3
         .select("#display")
@@ -134,11 +144,8 @@ const drawWithMovieData = () => {
         .attr("width", width)
         .attr("height", height)
         .append("g");
-
-    d3.csv("./../data/movie2vec/movie2vec_57.csv", function (data) {
-        drawdata(data);
-    });
 };
+
 // Reusable chart drawing code for when the data source changes
 
 // Add X axis

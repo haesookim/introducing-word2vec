@@ -153,10 +153,20 @@ main #interactive #left #controller #param-def {
   overflow: hidden;
   transition: all ease-in-out 0.3s;
 }
+main #interactive #left #controller #param-def .title,
+main #interactive #left #controller #param-def .content {
+  width: 300px;
+  overflow: hidden;
+}
 main #interactive #left #controller #param-def #closedef {
   position: absolute;
-  top: 170px;
-  left: 310px;
+  top: 20px;
+  left: 300px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
 }
 main #interactive #left #controller #disabled-overlay {
   position: absolute;

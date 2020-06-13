@@ -154,10 +154,20 @@ main {
                     background-color: rgba(0, 0, 0, 0.8);
                     width: 0px;
                     overflow: hidden;
+                    .title,
+                    .content {
+                        width: 300px;
+                        overflow: hidden;
+                    }
                     #closedef {
                         position: absolute;
-                        top: 170px;
-                        left: 310px;
+                        top: 20px;
+                        left: 300px;
+                        background: none;
+                        border: none;
+                        color: white;
+                        cursor: pointer;
+                        font-size: 24px;
                     }
                     transition: all ease-in-out 0.3s;
                 }
