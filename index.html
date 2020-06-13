@@ -82,14 +82,24 @@
                             The distance between 'Korea' and 'Seoul' is same as
                             that of 'Japan' and 'Tokyo'. Their relationship is
                             country-capital.
-                            <a onclick="showSection(4)"
+                            <a id="more-examples" onclick="showSection(4)"
                                 >Want some more examples?</a
                             >
                         </div>
                     </div>
                     <div class="section">
                         <div class="title">Where to use</div>
-                        <div class="bodytext"></div>
+                        <div class="bodytext">
+                            Did you know that Word2Vec is not only for "Words"?
+                            We can treat "Items" as "Words" and apply similar
+                            machine learning algorithm. We've used a metaphor;
+                            movies to wordss, and personal movie archives to
+                            sentences. If majority of people who watched
+                            "Batman" also watched "Dark Knight", then this movie
+                            can be recommended for the newbies of "Batman".
+                            Likewise, Word2Vec can be used to recommend various
+                            items to customers.
+                        </div>
                     </div>
                     <div class="section selected">
                         <div class="title">How to use</div>
@@ -98,10 +108,6 @@
                             and click a pair of words to compare it in the
                             vector space.Use the parameter controls below to see
                             how the values change.
-
-                            <br />
-                            <br />
-                            The data is created through~
                         </div>
                     </div>
                     <div class="section">
@@ -191,6 +197,9 @@
                         <div class="title">Selected Term</div>
                         <div class="content">relevant definition</div>
                         <button id="closedef" onclick="closeDef()"></button>
+                    </div>
+                    <div id="disabled-overlay" onclick="enableParameters()">
+                        <button>Click to return to interactive Mode</button>
                     </div>
                 </div>
             </div>

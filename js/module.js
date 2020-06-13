@@ -69,20 +69,6 @@ let colorbyCase = (d) => {
 let pair = [null, null];
 let coordsPair = [];
 
-let selectpoints = (point) => {
-    if (pair[0] == null) {
-        pair[0] = point;
-        point.attr("r", 7);
-    } else if (pair[1] == null) {
-        if (pair[0] == point) {
-            pair[0] == null;
-        } else {
-            pair[1] = point;
-        }
-    }
-    console.log(pair);
-};
-
 let emptypoints = () => {
     pair = [null, null];
 };
@@ -120,6 +106,7 @@ const createNewData = () => {
     datastring = size + "_" + window + "_" + model + ".csv";
 
     clearPair();
+    clearLine();
     d3.csv("./../data/" + datastring, function (data) {
         //d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
         svg.selectAll("circle")
@@ -139,6 +126,19 @@ const createNewData = () => {
     });
 };
 
+const drawWithMovieData = () => {
+    d3.select("#display").select("svg").remove().exit();
+    svg = d3
+        .select("#display")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g");
+
+    d3.csv("./../data/movie2vec/movie2vec_57.csv", function (data) {
+        drawdata(data);
+    });
+};
 // Reusable chart drawing code for when the data source changes
 
 // Add X axis
@@ -213,10 +213,8 @@ let drawdata = (data) => {
             }
 
             if (pair[0] != null) {
-                secondaryview.style.display = "block";
                 selectNode(pair[0], tooltip_select1);
             } else {
-                secondaryview.style.display = "none";
                 tooltip_select1.style("opacity", 0);
             }
 
@@ -231,7 +229,6 @@ let drawdata = (data) => {
         });
 };
 
-let secondaryview = document.getElementById("secondaryview");
 let words = document.getElementsByClassName("selectedword");
 
 const displayWords = () => {
@@ -242,10 +239,17 @@ const displayWords = () => {
 const clearPair = () => {
     pair = [null, null];
     coordsPair = [];
-    svg.selectAll("circle").attr("r", 5).style("fill", "#7EBDC3dd");
+    svg.selectAll("circle")
+        .attr("r", 5)
+        .style("fill", function (d) {
+            return colorbyCase(d);
+        });
     tooltip_select1.style("opacity", 0);
     tooltip_select2.style("opacity", 0);
-    secondaryview.style.display = "none";
+    ex_tip.style("opacity", 0);
+    ex_tip2.style("opacity", 0);
+    ex_tip3.style("opacity", 0);
+    ex_tip4.style("opacity", 0);
 };
 
 let inputform = document.getElementById("searchinput");
@@ -261,8 +265,11 @@ const searchForTerm = () => {
     selectNode(input, tooltip);
 };
 
+const searchByTerm = (input, tooltip) => {
+    selectNode(input, tooltip);
+};
+
 const selectNode = (input, tip) => {
-    console.log("??");
     svg.selectAll("circle")
         .style("fill", function (d) {
             if (d.name.toLowerCase() == input.toLowerCase()) {

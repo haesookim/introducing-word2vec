@@ -88,14 +88,26 @@ const showSection = (num) => {
     }
 
     if (num == 1) {
+        // datastring = "50_2_0.csv";
+        // createNewData();
+        clearPair();
+        clearLine();
         selectNode("korea", ex_tip);
         selectNode("seoul", ex_tip2);
         drawLine(0, 1);
-        selectNode("japan", ex_tip3);
-        selectNode("tokyo", ex_tip4);
+        selectNode("greece", ex_tip3);
+        selectNode("athens", ex_tip4);
         drawLine(2, 3);
-    }
-    if (num == 4) {
+        openMenu();
+    } else if (num == 2) {
+        clearPair();
+        clearLine();
+        drawWithMovieData();
+        searchByTerm("dark knight", ex_tip);
+        searchByTerm("batman", ex_tip2);
+        //drawLine(0, 1);
+        openMenu();
+    } else if (num == 4) {
         clearPair();
         clearLine();
         selectNode("man", ex_tip);
@@ -109,4 +121,19 @@ const showSection = (num) => {
         clearPair();
         openMenu();
     }
+
+    if (num != 3) {
+        disableParameters();
+    } else {
+        enableParameters();
+    }
+};
+
+let overlay = document.getElementById("disabled-overlay");
+const disableParameters = () => {
+    overlay.style.display = "flex";
+};
+
+const enableParameters = () => {
+    overlay.style.display = "none";
 };

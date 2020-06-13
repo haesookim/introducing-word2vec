@@ -32,6 +32,14 @@ main #interactive .bodytext {
   font-weight: 300;
   margin-top: 15px;
 }
+main #interactive .bodytext #more-examples {
+  display: block;
+  background-color: cornflowerblue;
+  color: white;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
 main #interactive #left {
   display: grid;
   grid-template-rows: 1fr 400px;
@@ -95,12 +103,14 @@ main #interactive #left #contents .section.selected {
 main #interactive #left #controller {
   display: flex;
   overflow: visible;
+  position: relative;
 }
 main #interactive #left #controller #controller-wrapper {
   border: 1px solid darkgray;
   align-self: stretch;
   justify-self: right;
   width: 300px;
+  height: 348px;
   margin: 10px 0 30px 58px;
   padding: 10px 20px 0;
   flex-shrink: 0;
@@ -147,6 +157,27 @@ main #interactive #left #controller #param-def #closedef {
   position: absolute;
   top: 170px;
   left: 310px;
+}
+main #interactive #left #controller #disabled-overlay {
+  position: absolute;
+  top: 10px;
+  left: 58px;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: none;
+  width: 342px;
+  height: 360px;
+  justify-content: center;
+  align-items: center;
+}
+main #interactive #left #controller #disabled-overlay button {
+  background: none;
+  border: none;
+  background-color: cornflowerblue;
+  color: white;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 6px;
+  height: 30px;
 }
 main #interactive #display {
   display: flex;

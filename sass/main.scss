@@ -31,6 +31,14 @@ main {
             font-size: 14px;
             font-weight: 300;
             margin-top: 15px;
+            #more-examples {
+                display: block;
+                background-color: cornflowerblue;
+                color: white;
+                width: fit-content;
+                padding: 5px 10px;
+                border-radius: 6px;
+            }
         }
 
         #left {
@@ -97,11 +105,14 @@ main {
             #controller {
                 display: flex;
                 overflow: visible;
+                position: relative;
+
                 #controller-wrapper {
                     border: 1px solid darkgray;
                     align-self: stretch;
                     justify-self: right;
                     width: 300px;
+                    height: 348px;
                     margin: 10px 0 30px 58px;
                     padding: 10px 20px 0;
                     flex-shrink: 0;
@@ -149,6 +160,28 @@ main {
                         left: 310px;
                     }
                     transition: all ease-in-out 0.3s;
+                }
+                #disabled-overlay {
+                    position: absolute;
+                    top: 10px;
+                    left: 58px;
+                    background-color: rgba(255, 255, 255, 0.9);
+                    display: none;
+                    width: 342px;
+                    height: 360px;
+                    justify-content: center;
+                    align-items: center;
+                    button {
+                        background: none;
+                        border: none;
+                        background-color: cornflowerblue;
+                        color: white;
+                        width: fit-content;
+                        padding: 5px 10px;
+                        border-radius: 6px;
+
+                        height: 30px;
+                    }
                 }
             }
         }
