@@ -147,6 +147,9 @@ const disableParameters = () => {
 
 const enableParameters = () => {
     overlay.style.display = "none";
+    sizeParameter.selectedIndex = 0;
+    windowParameter.selectedIndex = 0;
+    modelParameter.selectedIndex = 0;
     showSection(3);
     openMenu();
 };
