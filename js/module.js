@@ -111,7 +111,6 @@ const createNewData = () => {
     d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
         svg.selectAll("circle")
             .data(data)
-            .enter()
             .attr("r", 5)
             .transition() // Transition from old to new
             .duration(700)
@@ -123,8 +122,7 @@ const createNewData = () => {
             })
             .attr("cy", function (d) {
                 return y(d.y);
-            })
-            .exit();
+            });
     });
 };
 
