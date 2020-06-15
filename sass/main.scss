@@ -43,11 +43,11 @@ main {
 
         #left {
             display: grid;
-            grid-template-rows: 1fr 400px;
+            grid-template-rows: 1fr 500px;
             #contents {
                 padding: 10px 20px;
                 margin-top: 50px;
-                min-height: 348px;
+                min-height: 248px;
                 margin-left: 58px;
                 width: 300px;
                 border: 1px solid darkgray;
@@ -112,7 +112,7 @@ main {
                     align-self: stretch;
                     justify-self: right;
                     width: 300px;
-                    height: 348px;
+                    height: 448px;
                     margin: 10px 0 30px 58px;
                     padding: 10px 20px 0;
                     flex-shrink: 0;
@@ -130,19 +130,20 @@ main {
                             }
                         }
                     }
-                    .dropdown {
-                        margin-top: 5px;
-                        display: grid;
-                        align-items: stretch;
-                        grid-template-columns: 120px auto 35px;
-                        .infobutton {
-                            margin: 1px 5px;
-                            font-size: 20px;
-
-                            cursor: pointer;
-                            &:hover {
-                                color: rgb(100, 100, 100);
+                    .radio-wrapper {
+                        // display: grid;
+                        // grid-template-columns: 50% 50%;
+                        // grid-template-rows: 72px 100px 72px;
+                        .radio-label {
+                            display: flex;
+                            flex-wrap: nowrap;
+                            .infobutton {
+                                margin-left: 10px;
                             }
+                            margin-top: 10px;
+                        }
+                        .radio {
+                            margin-left: 20px;
                         }
                     }
                 }
@@ -198,7 +199,6 @@ main {
         #display {
             display: flex;
             align-self: end;
-            height: 90vh;
             min-height: 740px;
             margin: 0 58px 30px 10px;
             border: 1px solid darkgray;

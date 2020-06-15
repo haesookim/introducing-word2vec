@@ -66,7 +66,7 @@
                             Word2Vec takes a large corpus of text as its input
                             and produces a vector. Each word in the corpus
                             correspond to a vector that is different from one
-                            another. People convert words to vectors for
+                            an200. People convert words to vectors for
                             convenience of applying mathematical operations,
                             e.g., you can easily subtract or add “words” in the
                             form of vectors. Word2Vec uses shallow, two-layer
@@ -126,62 +126,75 @@
                             Select a combination of parameters and see how the
                             vector embedding result changes
                         </div>
-                        <div class="dropdown">
-                            <label for="size">Size:</label>
-                            <select
-                                name="size"
-                                id="size"
-                                onchange="createNewData()"
-                            >
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                                <option value="200">200</option>
-                            </select>
-                            <div class="infobutton" onclick="openDef(0)">
-                                <i
-                                    class="fa fa-info-circle"
-                                    aria-hidden="true"
-                                ></i>
+                        <div class="radio-wrapper">
+                            <div class="radio-label">
+                                Size
+                                <div class="infobutton" onclick="openDef(0)">
+                                    <i
+                                        class="fa fa-info-circle"
+                                        aria-hidden="true"
+                                    ></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="dropdown">
-                            <label for="window">Window Size:</label>
-                            <select
-                                name="window"
-                                id="window"
-                                onchange="createNewData()"
-                            >
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                            <div class="infobutton" onclick="openDef(1)">
-                                <i
-                                    class="fa fa-info-circle"
-                                    aria-hidden="true"
-                                ></i>
+                            <div class="radio">
+                                <input
+                                    type="radio"
+                                    name="size"
+                                    value="50"
+                                    checked
+                                />
+                                <label for="50">50</label>
+                                <input type="radio" name="size" value="100" />
+                                <label for="100">100</label>
+                                <input type="radio" name="size" value="200" />
+                                <label for="200">200</label>
+                            </div>
+                            <div class="radio-label">
+                                Window Size
+                                <div class="infobutton" onclick="openDef(1)">
+                                    <i
+                                        class="fa fa-info-circle"
+                                        aria-hidden="true"
+                                    ></i>
+                                </div>
+                            </div>
+                            <div class="radio">
+                                <input
+                                    type="radio"
+                                    name="window"
+                                    value="2"
+                                    checked
+                                />
+                                <label for="2">2</label>
+                                <input type="radio" name="window" value="3" />
+                                <label for="3">3</label>
+                                <input type="radio" name="window" value="4" />
+                                <label for="4">4</label>
+                                <input type="radio" name="window" value="5" />
+                                <label for="5">5</label>
+                            </div>
+                            <div class="radio-label">
+                                Model
+                                <div class="infobutton" onclick="openDef(2)">
+                                    <i
+                                        class="fa fa-info-circle"
+                                        aria-hidden="true"
+                                    ></i>
+                                </div>
+                            </div>
+                            <div class="radio">
+                                <input
+                                    type="radio"
+                                    name="model"
+                                    value="0"
+                                    checked
+                                />
+                                <label for="0">CBOW</label><br />
+                                <input type="radio" name="model" value="1" />
+                                <label for="1">Skip-gram</label>
                             </div>
                         </div>
 
-                        <div class="dropdown">
-                            <label for="model">Training Model:</label>
-
-                            <select
-                                name="model"
-                                id="model"
-                                onchange="createNewData()"
-                            >
-                                <option value="0">CBOW</option>
-                                <option value="1">Skip-gram</option>
-                            </select>
-                            <div class="infobutton" onclick="openDef(2)">
-                                <i
-                                    class="fa fa-info-circle"
-                                    aria-hidden="true"
-                                ></i>
-                            </div>
-                        </div>
                         <div id="code-wrapper">
                             Code Snippet:
                             <div id="code-snippet">
