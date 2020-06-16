@@ -6,6 +6,7 @@ let width = 800,
 let svg = d3
     .select("#display")
     .append("svg")
+    .attr("id", "mainsvg")
     .attr("width", width)
     .attr("height", height)
     .append("g");
@@ -283,6 +284,9 @@ const searchForTerm = () => {
     selectNode(input, tooltip);
 };
 
+let svgCoords = document.getElementById("mainsvg").getBoundingClientRect();
+console.log(svgCoords);
+
 const selectNode = (input, tip) => {
     svg.selectAll("circle")
         .style("fill", function (d) {
@@ -301,8 +305,8 @@ const selectNode = (input, tip) => {
             if (d.name.toLowerCase() == input.toLowerCase()) {
                 tip.style("opacity", 1);
                 tip.html(d.name)
-                    .style("left", x(d.x) + 450 + "px")
-                    .style("top", y(d.y) + 40 + "px");
+                    .style("left", x(d.x) + svgCoords.x + 10 + "px")
+                    .style("top", y(d.y) + svgCoords.y + 10 + "px");
             }
             if (pair.indexOf(d.name) != -1) {
                 return 7;
@@ -312,13 +316,13 @@ const selectNode = (input, tip) => {
         });
 };
 //temporary data code
-d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
-    drawdata(data);
-});
-
-// d3.csv("./../data/" + datastring, function (data) {
+// d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
 //     drawdata(data);
 // });
+
+d3.csv("./../data/" + datastring, function (data) {
+    drawdata(data);
+});
 
 // legend
 
@@ -362,11 +366,10 @@ legend
 
 const drawWithMovieData = () => {
     clearSVG();
-    d3.csv(
-        "./../introducing-word2vec/data/movie2vec/movie2vec_57.csv",
-        function (data) {
-            // d3.csv("./../data/movie2vec/movie2vec_57.csv", function (data) {
-            drawdata(data);
-        },
-    );
+    // d3.csv(
+    //     "./../introducing-word2vec/data/movie2vec/movie2vec_57.csv",
+    //     function (data) {
+    d3.csv("./../data/movie2vec/movie2vec_57.csv", function (data) {
+        drawdata(data);
+    });
 };
