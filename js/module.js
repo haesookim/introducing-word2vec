@@ -166,6 +166,8 @@ var y = d3.scaleLinear().domain([-0.1, 1.1]).range([height, 0]);
 
 let dots;
 
+let svgpos = getNode;
+
 let drawdata = (data) => {
     svg.append("g").attr("transform", "translate(0," + height + ")");
     // Add dots
@@ -192,10 +194,15 @@ let drawdata = (data) => {
                     // .transition() // Transition from old to new
                     // .duration(200)
                     .style("opacity", 1);
+                // tooltip
+                //     .html(d.name)
+                //     .style("left", d3.mouse(this)[0] + 450 + "px")
+                //     .style("top", d3.mouse(this)[1] + 40 + "px");
+
                 tooltip
                     .html(d.name)
-                    .style("left", d3.mouse(this)[0] + 450 + "px")
-                    .style("top", d3.mouse(this)[1] + 40 + "px");
+                    .style("left", event.pageX + 10 + "px")
+                    .style("top", event.pageY + 10 + "px");
             }
         })
         .on("mouseleave", function (d) {
