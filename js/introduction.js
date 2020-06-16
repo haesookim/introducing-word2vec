@@ -93,8 +93,8 @@ const showSection = (num) => {
     if (switchData) {
         clearSVG();
         datastring = "50_2_0.csv";
-        d3.csv("./../data/" + datastring, function (data) {
-            //d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+        //d3.csv("./../data/" + datastring, function (data) {
+        d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
             drawdata(data);
         });
         switchData = false;
