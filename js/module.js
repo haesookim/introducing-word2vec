@@ -91,13 +91,20 @@ let clearLine = () => {
 let sizeParameter = document.getElementById("size");
 let windowParameter = document.getElementById("window");
 let modelParameter = document.getElementById("model");
+let paramRadios = document.querySelectorAll('input[type="radio"]');
+console.log(paramRadios);
 
+for (let i = 0; i < 9; i++) {
+    paramRadios[i].addEventListener("change", function () {
+        createNewData();
+    });
+}
 let datastring = "50_2_0.csv";
 
 const createNewData = () => {
-    let size = sizeParameter.options[sizeParameter.selectedIndex].value;
-    let window = windowParameter.options[windowParameter.selectedIndex].value;
-    let model = modelParameter.options[modelParameter.selectedIndex].value;
+    let size = document.querySelector('input[name="size"]:checked').value;
+    let window = document.querySelector('input[name="window"]:checked').value;
+    let model = document.querySelector('input[name="model"]:checked').value;
 
     document.getElementById("sizeparam").innerHTML = "size = " + size;
     document.getElementById("windowparam").innerHTML = "window = " + window;
@@ -107,24 +114,23 @@ const createNewData = () => {
 
     clearPair();
     clearLine();
-    "./../data/" + datastring,
-        function (data) {
-            //d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
-            svg.selectAll("circle")
-                .data(data)
-                .attr("r", 5)
-                .transition() // Transition from old to new
-                .duration(700)
-                .style("fill", function (d) {
-                    return colorbyCase(d);
-                })
-                .attr("cx", function (d) {
-                    return x(d.x);
-                })
-                .attr("cy", function (d) {
-                    return y(d.y);
-                });
-        };
+    d3.csv("./../data/" + datastring, function (data) {
+        //d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+        svg.selectAll("circle")
+            .data(data)
+            .attr("r", 5)
+            .transition() // Transition from old to new
+            .duration(700)
+            .style("fill", function (d) {
+                return colorbyCase(d);
+            })
+            .attr("cx", function (d) {
+                return x(d.x);
+            })
+            .attr("cy", function (d) {
+                return y(d.y);
+            });
+    });
 };
 
 const drawWithMovieData = () => {
