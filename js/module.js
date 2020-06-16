@@ -236,8 +236,9 @@ let drawdata = (data) => {
             } else if (pair[1] == null) {
                 pair[1] = d.name;
             } else if (pair[1] != null) {
-                pair = [null, null];
-                pair[0] = d.name;
+                //pair = [null, null];
+                pair[0] = pair[1];
+                pair[1] = d.name;
             }
 
             if (pair[0] != null) {
@@ -326,13 +327,13 @@ d3.csv("./../data/" + datastring, function (data) {
 // legend
 
 let legendData = [
-    { type: "Countries", cluster: "1" },
-    { type: "Capitals", cluster: "2" },
-    { type: "Foods", cluster: "3" },
-    { type: "Weather", cluster: "4" },
-    { type: "Jobs", cluster: "5" },
-    { type: "Gendered nouns", cluster: "6" },
-    { type: "Transport", cluster: "7" },
+    { type: "Countries", cluster: "1", name: "" },
+    { type: "Capitals", cluster: "2", name: "" },
+    { type: "Animals", cluster: "3", name: "" },
+    { type: "Weather", cluster: "4", name: "" },
+    { type: "Jobs", cluster: "5", name: "" },
+    { type: "Gendered nouns", cluster: "6", name: "" },
+    { type: "Transport", cluster: "7", name: "" },
 ];
 let legend = d3
     .select("#secondaryview")

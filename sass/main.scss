@@ -244,7 +244,20 @@ main {
             bottom: 30px;
             right: 58px;
             width: 200px;
-            padding: 20px 10px;
+            overflow: hidden;
+            transition: all ease-in-out 0.3s;
+            padding: 10px 10px 30px;
+            div {
+                font-weight: 700;
+                font-size: 18px;
+            }
+            button {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 24px;
+                cursor: pointer;
+            }
             text {
                 color: white;
                 width: fit-content;
