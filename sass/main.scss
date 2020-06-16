@@ -31,6 +31,8 @@ main {
             font-size: 14px;
             font-weight: 300;
             margin-top: 15px;
+            max-height: 140px;
+            overflow: scroll;
             #more-examples {
                 display: block;
                 background-color: cornflowerblue;
@@ -43,11 +45,11 @@ main {
 
         #left {
             display: grid;
-            grid-template-rows: 1fr 400px;
+            grid-template-rows: 1fr 500px;
             #contents {
                 padding: 10px 20px;
                 margin-top: 50px;
-                min-height: 348px;
+                min-height: 248px;
                 margin-left: 58px;
                 width: 300px;
                 border: 1px solid darkgray;
@@ -112,7 +114,7 @@ main {
                     align-self: stretch;
                     justify-self: right;
                     width: 300px;
-                    height: 348px;
+                    height: 448px;
                     margin: 10px 0 30px 58px;
                     padding: 10px 20px 0;
                     flex-shrink: 0;
@@ -130,19 +132,20 @@ main {
                             }
                         }
                     }
-                    .dropdown {
-                        margin-top: 5px;
-                        display: grid;
-                        align-items: stretch;
-                        grid-template-columns: 120px auto 35px;
-                        .infobutton {
-                            margin: 1px 5px;
-                            font-size: 20px;
-
-                            cursor: pointer;
-                            &:hover {
-                                color: rgb(100, 100, 100);
+                    .radio-wrapper {
+                        // display: grid;
+                        // grid-template-columns: 50% 50%;
+                        // grid-template-rows: 72px 100px 72px;
+                        .radio-label {
+                            display: flex;
+                            flex-wrap: nowrap;
+                            .infobutton {
+                                margin-left: 10px;
                             }
+                            margin-top: 10px;
+                        }
+                        .radio {
+                            margin-left: 20px;
                         }
                     }
                 }
@@ -178,7 +181,7 @@ main {
                     background-color: rgba(255, 255, 255, 0.9);
                     display: none;
                     width: 342px;
-                    height: 360px;
+                    height: 460px;
                     justify-content: center;
                     align-items: center;
                     button {
@@ -198,7 +201,6 @@ main {
         #display {
             display: flex;
             align-self: end;
-            height: 90vh;
             min-height: 740px;
             margin: 0 58px 30px 10px;
             border: 1px solid darkgray;
@@ -225,8 +227,6 @@ main {
             }
             svg {
                 justify-content: center;
-                width: 90%;
-                height: 90%;
                 margin: auto auto;
                 circle {
                     cursor: pointer;
@@ -242,20 +242,25 @@ main {
             position: absolute;
             color: white;
             bottom: 30px;
-            right: 30px;
+            right: 58px;
             width: 200px;
-            padding: 20px 10px;
-            display: none;
-            #selection {
-                display: flex;
-                .selectedword {
-                    width: 80px;
-                    padding: 5px 10px;
-                }
+            overflow: hidden;
+            transition: all ease-in-out 0.3s;
+            padding: 10px 10px 30px;
+            div {
+                font-weight: 700;
+                font-size: 18px;
             }
             button {
-                margin-left: auto;
-                margin-right: 0;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 24px;
+                cursor: pointer;
+            }
+            text {
+                color: white;
+                width: fit-content;
             }
         }
     }

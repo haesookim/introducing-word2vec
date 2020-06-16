@@ -78,6 +78,8 @@ let ex_tip4 = d3
     .style("border-radius", "4px")
     .style("padding", "5px 7px");
 
+let legendDiv = document.getElementById("secondaryview");
+
 let switchData = false;
 const showSection = (num) => {
     closeDef();
@@ -91,8 +93,8 @@ const showSection = (num) => {
     if (switchData) {
         clearSVG();
         datastring = "50_2_0.csv";
-        //d3.csv("./../data/" + datastring, function (data) {
-        d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+        d3.csv("./../data/" + datastring, function (data) {
+            //d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
             drawdata(data);
         });
         switchData = false;
@@ -112,8 +114,7 @@ const showSection = (num) => {
         clearPair();
         clearLine();
         drawWithMovieData();
-        searchByTerm("dark knight", ex_tip);
-        searchByTerm("batman", ex_tip2);
+
         //drawLine(0, 1);
         openMenu();
         switchData = true;
@@ -132,11 +133,18 @@ const showSection = (num) => {
         openMenu();
     }
 
-    if (num != 3) {
+    if (num == 2) {
         disableParameters();
     } else {
         overlay.style.display = "none";
     }
+
+    if (num == 2) {
+        legendDiv.style.display = "none";
+    } else {
+        legendDiv.style.display = "block";
+    }
+
     prevnum = num;
 };
 
@@ -147,9 +155,24 @@ const disableParameters = () => {
 
 const enableParameters = () => {
     overlay.style.display = "none";
-    sizeParameter.selectedIndex = 0;
-    windowParameter.selectedIndex = 0;
-    modelParameter.selectedIndex = 0;
     showSection(3);
     openMenu();
+};
+
+let legendVisible = true;
+let legendd = document.querySelector("#secondaryview");
+let legendButton = document.querySelector("#secondaryview button");
+
+const showLegend = () => {
+    if (legendVisible) {
+        legendDiv.style.height = "10px";
+        legendButton.innerHTML =
+            "<i class='fa fa-angle-up' aria-hidden='true'></i>";
+    } else {
+        console.log("???");
+        legendDiv.style.height = "230px";
+        legendButton.innerHTML =
+            "<i class='fa fa-angle-down' aria-hidden='true'></i>";
+    }
+    legendVisible = !legendVisible;
 };

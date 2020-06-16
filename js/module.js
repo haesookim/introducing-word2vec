@@ -45,6 +45,9 @@ let tooltip_select2 = d3
     .style("padding", "5px 7px");
 
 let colorbyCase = (d) => {
+    if (pair[0] == d.name || pair[1] == d.name) {
+        return "#FC7753dd";
+    }
     switch (d.cluster) {
         case "1":
             return "#805D93dd";
@@ -91,13 +94,19 @@ let clearLine = () => {
 let sizeParameter = document.getElementById("size");
 let windowParameter = document.getElementById("window");
 let modelParameter = document.getElementById("model");
+let paramRadios = document.querySelectorAll('input[type="radio"]');
 
+for (let i = 0; i < 9; i++) {
+    paramRadios[i].addEventListener("change", function () {
+        createNewData();
+    });
+}
 let datastring = "50_2_0.csv";
 
 const createNewData = () => {
-    let size = sizeParameter.options[sizeParameter.selectedIndex].value;
-    let window = windowParameter.options[windowParameter.selectedIndex].value;
-    let model = modelParameter.options[modelParameter.selectedIndex].value;
+    let size = document.querySelector('input[name="size"]:checked').value;
+    let window = document.querySelector('input[name="window"]:checked').value;
+    let model = document.querySelector('input[name="model"]:checked').value;
 
     document.getElementById("sizeparam").innerHTML = "size = " + size;
     document.getElementById("windowparam").innerHTML = "window = " + window;
@@ -107,8 +116,8 @@ const createNewData = () => {
 
     clearPair();
     clearLine();
-    //d3.csv("./../data/" + datastring, function (data) {
-    d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+    d3.csv("./../data/" + datastring, function (data) {
+        //d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
         svg.selectAll("circle")
             .data(data)
             .attr("r", 5)
@@ -123,18 +132,29 @@ const createNewData = () => {
             .attr("cy", function (d) {
                 return y(d.y);
             });
+
+        setTimeout(() => {
+            reselectNodes();
+        }, 700);
     });
+};
+
+const reselectNodes = () => {
+    console.log("??");
+    if (pair[0] != null) {
+        selectNode(pair[0], tooltip_select1);
+        selectNode(pair[1], tooltip_select2);
+    }
 };
 
 const drawWithMovieData = () => {
     clearSVG();
-    d3.csv(
-        "./../introducing-word2vec/data/movie2vec/movie2vec_57.csv",
-        function (data) {
-            //d3.csv("./../data/movie2vec/movie2vec_57.csv", function (data) {
-            drawdata(data);
-        },
-    );
+    // d3.csv(
+    //     "./../introducing-word2vec/data/movie2vec/movie2vec_57.csv",
+    //     function (data) {
+    d3.csv("./../data/movie2vec/movie2vec_57.csv", function (data) {
+        drawdata(data);
+    });
 };
 
 const clearSVG = () => {
@@ -216,8 +236,9 @@ let drawdata = (data) => {
             } else if (pair[1] == null) {
                 pair[1] = d.name;
             } else if (pair[1] != null) {
-                pair = [null, null];
-                pair[0] = d.name;
+                //pair = [null, null];
+                pair[0] = pair[1];
+                pair[1] = d.name;
             }
 
             if (pair[0] != null) {
@@ -233,19 +254,13 @@ let drawdata = (data) => {
             }
             console.log(pair);
             //comparison function
-            displayWords();
         });
 };
 
 let words = document.getElementsByClassName("selectedword");
 
-const displayWords = () => {
-    words[0].innerHTML = pair[0];
-    words[1].innerHTML = pair[1];
-};
-
 const clearPair = () => {
-    pair = [null, null];
+    //pair = [null, null];
     coordsPair = [];
     svg.selectAll("circle")
         .attr("r", 5)
@@ -270,10 +285,6 @@ const trackSearch = (e) => {
 
 const searchForTerm = () => {
     let input = inputform.value.trim();
-    selectNode(input, tooltip);
-};
-
-const searchByTerm = (input, tooltip) => {
     selectNode(input, tooltip);
 };
 
@@ -305,10 +316,50 @@ const selectNode = (input, tip) => {
         });
 };
 //temporary data code
-d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+// d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+//     drawdata(data);
+// });
+
+d3.csv("./../data/" + datastring, function (data) {
     drawdata(data);
 });
 
-// d3.csv("./../data/" + datastring, function (data) {
-//     drawdata(data);
-// });
+// legend
+
+let legendData = [
+    { type: "Countries", cluster: "1", name: "" },
+    { type: "Capitals", cluster: "2", name: "" },
+    { type: "Animals", cluster: "3", name: "" },
+    { type: "Weather", cluster: "4", name: "" },
+    { type: "Jobs", cluster: "5", name: "" },
+    { type: "Gendered nouns", cluster: "6", name: "" },
+    { type: "Transport", cluster: "7", name: "" },
+];
+let legend = d3
+    .select("#secondaryview")
+    .append("svg")
+    .attr("width", "200px")
+    .attr("height", "200px")
+    .append("g")
+    .selectAll("dot")
+    .data(legendData)
+    .enter();
+
+let legendDots = legend
+    .append("circle")
+    .attr("r", 7)
+    .attr("cx", 20)
+    .attr("cy", function (d) {
+        return d.cluster * 25 - 5;
+    })
+    .style("fill", function (d) {
+        return colorbyCase(d);
+    });
+
+legend
+    .append("text")
+    .text((d) => d.type)
+    .style("fill", "white")
+    .style("width", 80)
+    .attr("x", 40)
+    .attr("y", (d) => d.cluster * 25);

@@ -31,6 +31,8 @@ main #interactive .bodytext {
   font-size: 14px;
   font-weight: 300;
   margin-top: 15px;
+  max-height: 140px;
+  overflow: scroll;
 }
 main #interactive .bodytext #more-examples {
   display: block;
@@ -42,12 +44,12 @@ main #interactive .bodytext #more-examples {
 }
 main #interactive #left {
   display: grid;
-  grid-template-rows: 1fr 400px;
+  grid-template-rows: 1fr 500px;
 }
 main #interactive #left #contents {
   padding: 10px 20px;
   margin-top: 50px;
-  min-height: 348px;
+  min-height: 248px;
   margin-left: 58px;
   width: 300px;
   border: 1px solid darkgray;
@@ -110,7 +112,7 @@ main #interactive #left #controller #controller-wrapper {
   align-self: stretch;
   justify-self: right;
   width: 300px;
-  height: 348px;
+  height: 448px;
   margin: 10px 0 30px 58px;
   padding: 10px 20px 0;
   flex-shrink: 0;
@@ -129,19 +131,16 @@ main #interactive #left #controller #controller-wrapper #code-wrapper #code-snip
 main #interactive #left #controller #controller-wrapper #code-wrapper #code-snippet span {
   color: yellow;
 }
-main #interactive #left #controller #controller-wrapper .dropdown {
-  margin-top: 5px;
-  display: grid;
-  align-items: stretch;
-  grid-template-columns: 120px auto 35px;
+main #interactive #left #controller #controller-wrapper .radio-wrapper .radio-label {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 10px;
 }
-main #interactive #left #controller #controller-wrapper .dropdown .infobutton {
-  margin: 1px 5px;
-  font-size: 20px;
-  cursor: pointer;
+main #interactive #left #controller #controller-wrapper .radio-wrapper .radio-label .infobutton {
+  margin-left: 10px;
 }
-main #interactive #left #controller #controller-wrapper .dropdown .infobutton:hover {
-  color: #646464;
+main #interactive #left #controller #controller-wrapper .radio-wrapper .radio {
+  margin-left: 20px;
 }
 main #interactive #left #controller #param-def {
   position: relative;
@@ -175,7 +174,7 @@ main #interactive #left #controller #disabled-overlay {
   background-color: rgba(255, 255, 255, 0.9);
   display: none;
   width: 342px;
-  height: 360px;
+  height: 460px;
   justify-content: center;
   align-items: center;
 }
@@ -192,7 +191,6 @@ main #interactive #left #controller #disabled-overlay button {
 main #interactive #display {
   display: flex;
   align-self: end;
-  height: 90vh;
   min-height: 740px;
   margin: 0 58px 30px 10px;
   border: 1px solid darkgray;
@@ -220,8 +218,6 @@ main #interactive #display #search button {
 }
 main #interactive #display svg {
   justify-content: center;
-  width: 90%;
-  height: 90%;
   margin: auto auto;
 }
 main #interactive #display svg circle {
@@ -235,21 +231,26 @@ main #interactive #secondaryview {
   position: absolute;
   color: white;
   bottom: 30px;
-  right: 30px;
+  right: 58px;
   width: 200px;
-  padding: 20px 10px;
-  display: none;
+  overflow: hidden;
+  transition: all ease-in-out 0.3s;
+  padding: 10px 10px 30px;
 }
-main #interactive #secondaryview #selection {
-  display: flex;
-}
-main #interactive #secondaryview #selection .selectedword {
-  width: 80px;
-  padding: 5px 10px;
+main #interactive #secondaryview div {
+  font-weight: 700;
+  font-size: 18px;
 }
 main #interactive #secondaryview button {
-  margin-left: auto;
-  margin-right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+main #interactive #secondaryview text {
+  color: white;
+  width: fit-content;
 }
 
 #popup {
