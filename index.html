@@ -40,7 +40,7 @@
         <div id="interactive">
             <div id="left">
                 <div id="contents">
-                    <div id="menu">
+                    <!-- <div id="menu">
                         <button id="menu-close" onclick="openMenu()">
                             <i class="fa fa-times" aria-hidden="true"></i>
                         </button>
@@ -59,7 +59,7 @@
                     </div>
                     <button id="menubutton" onclick="openMenu()">
                         <i class="fa fa-bars" aria-hidden="true"></i>
-                    </button>
+                    </button> -->
                     <div class="section">
                         <div class="title">Definition of Word2Vec</div>
                         <div class="bodytext">
@@ -78,10 +78,9 @@
                     <div class="section">
                         <div class="title">Relationship vectors</div>
                         <div class="bodytext">
-                            Here's one very intuitive way to see how Word2Vec
-                            works. Look at the highlighted words on the right.
-                            The distance between 'Korea' and 'Seoul' is same as
-                            that of 'Greece' and 'Athens'. Their relationship is
+                            Look at the highlighted words on the right. The
+                            distance between 'Korea' and 'Seoul' is same as that
+                            of 'Greece' and 'Athens'. Their relationship is
                             country-capital.
                             <a id="more-examples" onclick="showSection(4)"
                                 >See another example</a
@@ -91,15 +90,12 @@
                     <div class="section">
                         <div class="title">Where to use</div>
                         <div class="bodytext">
-                            Did you know that Word2Vec is not only for "Words"?
-                            We can treat "Items" as "Words" and apply similar
-                            machine learning algorithm. We've used a metaphor;
-                            movies to words, and personal movie archives to
-                            sentences. If majority of people who watched
-                            "Batman" also watched "Dark Knight", then this movie
-                            can be recommended for the newbies of "Batman".
-                            Likewise, Word2Vec can be used to recommend various
-                            items to customers.
+                            Word2Vec can also be applied outside of words, in
+                            building recommendation systems. Here, we mapped
+                            movies to vectors using movie review texts. A user's
+                            preference can also be expressed as a vector, and
+                            Word2Vec can be used to recommend various items to
+                            customers.
                         </div>
                     </div>
                     <div class="section selected">
@@ -118,6 +114,23 @@
                             'actor' is same as that of 'woman' and 'actress'.
                             Their relationship is gender-job.
                         </div>
+                    </div>
+                    <div id="navigation">
+                        <a class="menuitem" onclick="showSection(0)">
+                            Definition of Word2Vec
+                        </a>
+                        &middot;
+                        <a class="menuitem" onclick="showSection(1)">
+                            Relationship Vectors
+                        </a>
+                        &middot;
+                        <a class="menuitem" onclick="showSection(2)">
+                            Where to use Word2Vec
+                        </a>
+                        &middot;
+                        <a class="menuitem" onclick="showSection(3)">
+                            How to use
+                        </a>
                     </div>
                 </div>
                 <div id="controller">

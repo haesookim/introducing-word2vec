@@ -58,43 +58,18 @@ main #interactive #left #contents {
   overflow: hidden;
   position: relative;
 }
-main #interactive #left #contents #menubutton {
-  background: rgba(0, 0, 0, 0.9);
-  border: none;
-  display: block;
-  border-radius: 3px;
-  margin: 5px 0;
-  z-index: 10;
-  font-size: 24px;
-  color: white;
-  cursor: pointer;
-}
-main #interactive #left #contents #menu {
-  background: rgba(0, 0, 0, 0.9);
-  border: none;
+main #interactive #left #contents #navigation {
   position: absolute;
-  top: 0px;
-  left: 0px;
-  height: 100%;
-  width: 0;
-  overflow: hidden;
-  transition: all ease-in-out 0.3s;
-  padding: 20px 0;
-  overflow: hidden;
-}
-main #interactive #left #contents #menu .menuitem {
-  cursor: pointer;
-  color: white;
-  overflow: hidden;
+  bottom: 15px;
   width: 300px;
 }
-main #interactive #left #contents #menu #menu-close {
-  position: relative;
-  left: 280px;
-  border: none;
-  background: none;
-  color: white;
-  font-size: 24px;
+main #interactive #left #contents #navigation .menuitem {
+  cursor: pointer;
+  font-size: 12px;
+  color: blue;
+}
+main #interactive #left #contents #navigation .menuitem.selected {
+  font-weight: 700;
 }
 main #interactive #left #contents .section {
   display: none;

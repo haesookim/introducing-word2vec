@@ -109,14 +109,16 @@ const showSection = (num) => {
         selectNode("greece", ex_tip3);
         selectNode("athens", ex_tip4);
         drawLine(2, 3);
-        openMenu();
     } else if (num == 2) {
         clearPair();
         clearLine();
         drawWithMovieData();
 
+        setTimeout(() => {
+            selectNode("Batman (1989)", ex_tip);
+            selectNode("Dark Knight, The (2008)", ex_tip2);
+        }, 400);
         //drawLine(0, 1);
-        openMenu();
         switchData = true;
     } else if (num == 4) {
         clearPair();
@@ -130,7 +132,6 @@ const showSection = (num) => {
     } else {
         clearLine();
         clearPair();
-        openMenu();
     }
 
     if (num == 2) {

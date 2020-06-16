@@ -147,16 +147,6 @@ const reselectNodes = () => {
     }
 };
 
-const drawWithMovieData = () => {
-    clearSVG();
-    // d3.csv(
-    //     "./../introducing-word2vec/data/movie2vec/movie2vec_57.csv",
-    //     function (data) {
-    d3.csv("./../data/movie2vec/movie2vec_57.csv", function (data) {
-        drawdata(data);
-    });
-};
-
 const clearSVG = () => {
     d3.select("#display").select("svg").remove().exit();
     svg = d3
@@ -174,14 +164,14 @@ var x = d3.scaleLinear().domain([-0.1, 1.1]).range([0, width]);
 // Add Y axis
 var y = d3.scaleLinear().domain([-0.1, 1.1]).range([height, 0]);
 
+let dots;
+
 let drawdata = (data) => {
     svg.append("g").attr("transform", "translate(0," + height + ")");
     // Add dots
-    svg.append("g")
-        .selectAll("dot")
-        .data(data)
-        .enter()
-        .append("circle")
+    dots = svg.append("g").selectAll("dot").data(data).enter();
+
+    dots.append("circle")
         .attr("cx", function (d) {
             return x(d.x);
         })
@@ -260,7 +250,7 @@ let drawdata = (data) => {
 let words = document.getElementsByClassName("selectedword");
 
 const clearPair = () => {
-    //pair = [null, null];
+    pair = [null, null];
     coordsPair = [];
     svg.selectAll("circle")
         .attr("r", 5)
@@ -293,8 +283,9 @@ const selectNode = (input, tip) => {
         .style("fill", function (d) {
             if (d.name.toLowerCase() == input.toLowerCase()) {
                 coordsPair.push([d.x, d.y]);
-                return "#FC7753dd";
-            } else if (pair.indexOf(d.name) != -1) {
+            }
+
+            if (pair.indexOf(d.name) != -1) {
                 return "#FC7753dd";
             } else {
                 return colorbyCase(d);
@@ -307,8 +298,8 @@ const selectNode = (input, tip) => {
                 tip.html(d.name)
                     .style("left", x(d.x) + 450 + "px")
                     .style("top", y(d.y) + 40 + "px");
-                return 7;
-            } else if (pair.indexOf(d.name) != -1) {
+            }
+            if (pair.indexOf(d.name) != -1) {
                 return 7;
             } else {
                 return 5;
@@ -363,3 +354,13 @@ legend
     .style("width", 80)
     .attr("x", 40)
     .attr("y", (d) => d.cluster * 25);
+
+const drawWithMovieData = () => {
+    clearSVG();
+    // d3.csv(
+    //     "./../introducing-word2vec/data/movie2vec/movie2vec_57.csv",
+    //     function (data) {
+    d3.csv("./../data/movie2vec/movie2vec_57.csv", function (data) {
+        drawdata(data);
+    });
+};
