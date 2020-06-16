@@ -166,8 +166,6 @@ var y = d3.scaleLinear().domain([-0.1, 1.1]).range([height, 0]);
 
 let dots;
 
-let svgpos = getNode;
-
 let drawdata = (data) => {
     svg.append("g").attr("transform", "translate(0," + height + ")");
     // Add dots
