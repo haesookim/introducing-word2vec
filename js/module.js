@@ -116,7 +116,7 @@ const createNewData = () => {
     datastring = size + "_" + window + "_" + model + ".csv";
 
     searchterm = "";
-    clearPair();
+    //clearPair();
     clearLine();
     //d3.csv("./../data/" + datastring, function (data) {
     d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
