@@ -360,7 +360,8 @@ const drawWithMovieData = () => {
     d3.csv(
         "./../introducing-word2vec/data/movie2vec/movie2vec_57.csv",
         function (data) {
-    // d3.csv("./../data/movie2vec/movie2vec_57.csv", function (data) {
-    //     drawdata(data);
-    // });
+            // d3.csv("./../data/movie2vec/movie2vec_57.csv", function (data) {
+            drawdata(data);
+        },
+    );
 };
