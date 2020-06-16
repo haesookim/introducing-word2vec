@@ -115,6 +115,7 @@ const createNewData = () => {
 
     datastring = size + "_" + window + "_" + model + ".csv";
 
+    searchterm = "";
     clearPair();
     clearLine();
     //d3.csv("./../data/" + datastring, function (data) {
@@ -168,6 +169,7 @@ let dots;
 let wordArray = [];
 
 let drawdata = (data) => {
+    wordArray = [];
     svg.append("g").attr("transform", "translate(0," + height + ")");
     // Add dots
     dots = svg.append("g").selectAll("dot").data(data).enter();
@@ -274,9 +276,17 @@ const clearPair = () => {
 
 let inputform = document.getElementById("searchinput");
 let terms = document.querySelectorAll(".term");
+let searchterm = "";
+for (let i = 0; i < terms.length; i++) {
+    terms[i].addEventListener("click", () => {
+        searchterm = this.innerHTML;
+        selectNode(this.innerHTML, tooltip);
+    });
+}
 
 const trackSearch = (e) => {
     if (e.keyCode == 13) {
+        searchterm = inputform.value;
         searchForTerm();
         for (let i = 0; i < terms.length; i++) {
             terms[i].innerHTML = "";
@@ -284,9 +294,7 @@ const trackSearch = (e) => {
                 terms[i].classList.toggle("visible");
             }
         }
-    }
-
-    if (inputform.value !== "") {
+    } else if (inputform.value !== "") {
         for (let i = 0; i < terms.length; i++) {
             terms[i].innerHTML = "";
             if (terms[i].classList.contains("visible")) {
@@ -345,12 +353,16 @@ const selectNode = (input, tip) => {
                     .style("left", x(d.x) + svgCoords.x + 10 + "px")
                     .style("top", y(d.y) + svgCoords.y + 10 + "px");
             }
+
             if (pair.indexOf(d.name) != -1) {
+                return 7;
+            } else if (d.name.toLowerCase() == searchterm.toLowerCase()) {
                 return 7;
             } else {
                 return 5;
             }
         });
+    searchterm = "";
 };
 //temporary data code
 d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {

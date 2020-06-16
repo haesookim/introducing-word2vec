@@ -6,7 +6,7 @@ body {
 
 main {
   height: 100vh;
-  overflow: scroll;
+  overflow: hidden;
 }
 main #title {
   width: 100vw;
