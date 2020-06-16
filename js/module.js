@@ -141,7 +141,6 @@ const createNewData = () => {
 };
 
 const reselectNodes = () => {
-    console.log("??");
     if (pair[0] != null) {
         selectNode(pair[0], tooltip_select1);
         selectNode(pair[1], tooltip_select2);
@@ -166,6 +165,7 @@ var x = d3.scaleLinear().domain([-0.1, 1.1]).range([0, width]);
 var y = d3.scaleLinear().domain([-0.1, 1.1]).range([height, 0]);
 
 let dots;
+let wordArray = [];
 
 let drawdata = (data) => {
     svg.append("g").attr("transform", "translate(0," + height + ")");
@@ -174,6 +174,7 @@ let drawdata = (data) => {
 
     dots.append("circle")
         .attr("cx", function (d) {
+            wordArray.push(d.name);
             return x(d.x);
         })
         .attr("cy", function (d) {
@@ -272,10 +273,47 @@ const clearPair = () => {
 };
 
 let inputform = document.getElementById("searchinput");
+let terms = document.querySelectorAll(".term");
 
 const trackSearch = (e) => {
     if (e.keyCode == 13) {
         searchForTerm();
+        for (let i = 0; i < terms.length; i++) {
+            terms[i].innerHTML = "";
+            if (terms[i].classList.contains("visible")) {
+                terms[i].classList.toggle("visible");
+            }
+        }
+    }
+
+    if (inputform.value !== "") {
+        for (let i = 0; i < terms.length; i++) {
+            terms[i].innerHTML = "";
+            if (terms[i].classList.contains("visible")) {
+                terms[i].classList.toggle("visible");
+            }
+        }
+        let termscount = 0;
+        for (let i = 0; i < wordArray.length; i++) {
+            if (
+                wordArray[i].toLowerCase().substr(0, inputform.value.length) ==
+                inputform.value.toLowerCase()
+            ) {
+                terms[termscount].innerHTML = wordArray[i];
+                terms[termscount].classList.toggle("visible");
+                termscount++;
+            }
+            if (termscount.length > 4) {
+                break;
+            }
+        }
+    } else {
+        for (let i = 0; i < terms.length; i++) {
+            terms[i].innerHTML = "";
+            if (terms[i].classList.contains("visible")) {
+                terms[i].classList.toggle("visible");
+            }
+        }
     }
 };
 
@@ -285,7 +323,6 @@ const searchForTerm = () => {
 };
 
 let svgCoords = document.getElementById("mainsvg").getBoundingClientRect();
-console.log(svgCoords);
 
 const selectNode = (input, tip) => {
     svg.selectAll("circle")

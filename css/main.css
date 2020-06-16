@@ -8,6 +8,11 @@ main {
   height: 100vh;
   overflow: scroll;
 }
+main #title {
+  width: 100vw;
+  position: fixed;
+  padding: 10px 58px;
+}
 main #interactive {
   height: 100vh;
   width: 100vw;
@@ -31,7 +36,6 @@ main #interactive .bodytext {
   font-size: 14px;
   font-weight: 300;
   margin-top: 15px;
-  max-height: 140px;
   overflow: scroll;
 }
 main #interactive .bodytext #more-examples {
@@ -57,9 +61,12 @@ main #interactive #left #contents {
   justify-self: stretch;
   overflow: hidden;
   position: relative;
+  display: grid;
+  grid-template-rows: 1fr 50px;
 }
 main #interactive #left #contents #navigation {
   position: absolute;
+  left: 20px;
   bottom: 15px;
   width: 300px;
 }
@@ -75,7 +82,11 @@ main #interactive #left #contents .section {
   display: none;
 }
 main #interactive #left #contents .section.selected {
-  display: block;
+  display: grid;
+  grid-template-rows: 36px 1fr;
+}
+main #interactive #left #contents .section.selected .bodytext {
+  align-self: stretch;
 }
 main #interactive #left #controller {
   display: flex;
@@ -165,10 +176,11 @@ main #interactive #left #controller #disabled-overlay button {
 }
 main #interactive #display {
   display: flex;
-  align-self: end;
+  align-self: stretch;
   min-height: 740px;
-  margin: 0 58px 30px 10px;
+  margin: 50px 58px 30px 10px;
   border: 1px solid darkgray;
+  overflow: hidden;
 }
 main #interactive #display #search {
   position: absolute;
@@ -182,6 +194,7 @@ main #interactive #display #search input {
   padding: 5px 10px;
   padding-right: 20px;
   font-size: 16px;
+  width: 200px;
 }
 main #interactive #display #search button {
   background: none;
@@ -191,9 +204,24 @@ main #interactive #display #search button {
   cursor: pointer;
   font-size: 16px;
 }
+main #interactive #display #search #autocomplete {
+  width: 230px;
+  margin: 0;
+}
+main #interactive #display #search #autocomplete .term {
+  margin: 0;
+}
+main #interactive #display #search #autocomplete .term.visible {
+  padding: 5px 10px;
+  width: 210px;
+  border-bottom: 1px gray solid;
+  border-left: 1px gray solid;
+  border-right: 1px gray solid;
+}
 main #interactive #display svg {
   justify-content: center;
   margin: auto auto;
+  overflow: visible;
 }
 main #interactive #display svg circle {
   cursor: pointer;
