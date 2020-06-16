@@ -107,34 +107,34 @@ const createNewData = () => {
 
     clearPair();
     clearLine();
-    //d3.csv("./../data/" + datastring, function (data) {
-    d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
-        svg.selectAll("circle")
-            .data(data)
-            .attr("r", 5)
-            .transition() // Transition from old to new
-            .duration(700)
-            .style("fill", function (d) {
-                return colorbyCase(d);
-            })
-            .attr("cx", function (d) {
-                return x(d.x);
-            })
-            .attr("cy", function (d) {
-                return y(d.y);
-            });
-    });
+    "./../data/" + datastring,
+        function (data) {
+            //d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+            svg.selectAll("circle")
+                .data(data)
+                .attr("r", 5)
+                .transition() // Transition from old to new
+                .duration(700)
+                .style("fill", function (d) {
+                    return colorbyCase(d);
+                })
+                .attr("cx", function (d) {
+                    return x(d.x);
+                })
+                .attr("cy", function (d) {
+                    return y(d.y);
+                });
+        };
 };
 
 const drawWithMovieData = () => {
     clearSVG();
-    d3.csv(
-        "./../introducing-word2vec/data/movie2vec/movie2vec_57.csv",
-        function (data) {
-            //d3.csv("./../data/movie2vec/movie2vec_57.csv", function (data) {
-            drawdata(data);
-        },
-    );
+    // d3.csv(
+    //     "./../introducing-word2vec/data/movie2vec/movie2vec_57.csv",
+    //     function (data) {
+    d3.csv("./../data/movie2vec/movie2vec_57.csv", function (data) {
+        drawdata(data);
+    });
 };
 
 const clearSVG = () => {
@@ -305,10 +305,50 @@ const selectNode = (input, tip) => {
         });
 };
 //temporary data code
-d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+// d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+//     drawdata(data);
+// });
+
+d3.csv("./../data/" + datastring, function (data) {
     drawdata(data);
 });
 
-// d3.csv("./../data/" + datastring, function (data) {
-//     drawdata(data);
-// });
+// legend
+
+let legendData = [
+    { type: "Countries", cluster: "1" },
+    { type: "Capitals", cluster: "2" },
+    { type: "Foods", cluster: "3" },
+    { type: "Weather", cluster: "4" },
+    { type: "Jobs", cluster: "5" },
+    { type: "Gendered nouns", cluster: "6" },
+    { type: "Transport", cluster: "7" },
+];
+let legend = d3
+    .select("#secondaryview")
+    .append("svg")
+    .attr("width", "200px")
+    .attr("height", "200px")
+    .append("g")
+    .selectAll("dot")
+    .data(legendData)
+    .enter();
+
+let legendDots = legend
+    .append("circle")
+    .attr("r", 7)
+    .attr("cx", 20)
+    .attr("cy", function (d) {
+        return d.cluster * 25 - 5;
+    })
+    .style("fill", function (d) {
+        return colorbyCase(d);
+    });
+
+legend
+    .append("text")
+    .text((d) => d.type)
+    .style("fill", "white")
+    .style("width", 80)
+    .attr("x", 40)
+    .attr("y", (d) => d.cluster * 25);

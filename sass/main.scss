@@ -31,6 +31,8 @@ main {
             font-size: 14px;
             font-weight: 300;
             margin-top: 15px;
+            max-height: 140px;
+            overflow: scroll;
             #more-examples {
                 display: block;
                 background-color: cornflowerblue;
@@ -179,7 +181,7 @@ main {
                     background-color: rgba(255, 255, 255, 0.9);
                     display: none;
                     width: 342px;
-                    height: 360px;
+                    height: 460px;
                     justify-content: center;
                     align-items: center;
                     button {
@@ -225,8 +227,6 @@ main {
             }
             svg {
                 justify-content: center;
-                width: 90%;
-                height: 90%;
                 margin: auto auto;
                 circle {
                     cursor: pointer;
@@ -245,17 +245,9 @@ main {
             right: 30px;
             width: 200px;
             padding: 20px 10px;
-            display: none;
-            #selection {
-                display: flex;
-                .selectedword {
-                    width: 80px;
-                    padding: 5px 10px;
-                }
-            }
-            button {
-                margin-left: auto;
-                margin-right: 0;
+            text {
+                color: white;
+                width: fit-content;
             }
         }
     }

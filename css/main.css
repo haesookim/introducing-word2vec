@@ -31,6 +31,8 @@ main #interactive .bodytext {
   font-size: 14px;
   font-weight: 300;
   margin-top: 15px;
+  max-height: 140px;
+  overflow: scroll;
 }
 main #interactive .bodytext #more-examples {
   display: block;
@@ -172,7 +174,7 @@ main #interactive #left #controller #disabled-overlay {
   background-color: rgba(255, 255, 255, 0.9);
   display: none;
   width: 342px;
-  height: 360px;
+  height: 460px;
   justify-content: center;
   align-items: center;
 }
@@ -216,8 +218,6 @@ main #interactive #display #search button {
 }
 main #interactive #display svg {
   justify-content: center;
-  width: 90%;
-  height: 90%;
   margin: auto auto;
 }
 main #interactive #display svg circle {
@@ -234,18 +234,10 @@ main #interactive #secondaryview {
   right: 30px;
   width: 200px;
   padding: 20px 10px;
-  display: none;
 }
-main #interactive #secondaryview #selection {
-  display: flex;
-}
-main #interactive #secondaryview #selection .selectedword {
-  width: 80px;
-  padding: 5px 10px;
-}
-main #interactive #secondaryview button {
-  margin-left: auto;
-  margin-right: 0;
+main #interactive #secondaryview text {
+  color: white;
+  width: fit-content;
 }
 
 #popup {

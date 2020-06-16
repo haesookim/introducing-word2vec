@@ -78,6 +78,8 @@ let ex_tip4 = d3
     .style("border-radius", "4px")
     .style("padding", "5px 7px");
 
+let legendDiv = document.getElementById("secondaryview");
+
 let switchData = false;
 const showSection = (num) => {
     closeDef();
@@ -137,6 +139,13 @@ const showSection = (num) => {
     } else {
         overlay.style.display = "none";
     }
+
+    if (num == 2) {
+        legendDiv.style.display = "none";
+    } else {
+        legendDiv.style.display = "block";
+    }
+
     prevnum = num;
 };
 
