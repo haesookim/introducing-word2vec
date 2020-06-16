@@ -114,8 +114,7 @@ const showSection = (num) => {
         clearPair();
         clearLine();
         drawWithMovieData();
-        searchByTerm("dark knight", ex_tip);
-        searchByTerm("batman", ex_tip2);
+
         //drawLine(0, 1);
         openMenu();
         switchData = true;

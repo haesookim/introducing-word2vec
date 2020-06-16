@@ -45,6 +45,9 @@ let tooltip_select2 = d3
     .style("padding", "5px 7px");
 
 let colorbyCase = (d) => {
+    if (pair[0] == d.name || pair[1] == d.name) {
+        return "#FC7753dd";
+    }
     switch (d.cluster) {
         case "1":
             return "#805D93dd";
@@ -92,7 +95,6 @@ let sizeParameter = document.getElementById("size");
 let windowParameter = document.getElementById("window");
 let modelParameter = document.getElementById("model");
 let paramRadios = document.querySelectorAll('input[type="radio"]');
-console.log(paramRadios);
 
 for (let i = 0; i < 9; i++) {
     paramRadios[i].addEventListener("change", function () {
@@ -130,7 +132,19 @@ const createNewData = () => {
             .attr("cy", function (d) {
                 return y(d.y);
             });
+
+        setTimeout(() => {
+            reselectNodes();
+        }, 700);
     });
+};
+
+const reselectNodes = () => {
+    console.log("??");
+    if (pair[0] != null) {
+        selectNode(pair[0], tooltip_select1);
+        selectNode(pair[1], tooltip_select2);
+    }
 };
 
 const drawWithMovieData = () => {
@@ -239,19 +253,13 @@ let drawdata = (data) => {
             }
             console.log(pair);
             //comparison function
-            displayWords();
         });
 };
 
 let words = document.getElementsByClassName("selectedword");
 
-const displayWords = () => {
-    words[0].innerHTML = pair[0];
-    words[1].innerHTML = pair[1];
-};
-
 const clearPair = () => {
-    pair = [null, null];
+    //pair = [null, null];
     coordsPair = [];
     svg.selectAll("circle")
         .attr("r", 5)
@@ -276,10 +284,6 @@ const trackSearch = (e) => {
 
 const searchForTerm = () => {
     let input = inputform.value.trim();
-    selectNode(input, tooltip);
-};
-
-const searchByTerm = (input, tooltip) => {
     selectNode(input, tooltip);
 };
 
