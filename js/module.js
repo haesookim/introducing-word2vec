@@ -341,6 +341,8 @@ const selectNode = (input, tip) => {
 
             if (pair.indexOf(d.name) != -1) {
                 return "#FC7753dd";
+            } else if (d.name.toLowerCase() == searchterm.toLowerCase()) {
+                return "#FC7753dd";
             } else {
                 return colorbyCase(d);
             }
