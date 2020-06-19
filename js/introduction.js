@@ -93,8 +93,8 @@ const showSection = (num) => {
     if (switchData) {
         clearSVG();
         datastring = "50_2_0.csv";
-        //d3.csv("./../data/" + datastring, function (data) {
-        d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
+        d3.csv("./../data/" + datastring, function (data) {
+            //d3.csv("./../introducing-word2vec/data/" + datastring, function (data) {
             drawdata(data);
         });
         switchData = false;
@@ -103,12 +103,14 @@ const showSection = (num) => {
     if (num == 1) {
         clearPair();
         clearLine();
-        selectNode("korea", ex_tip);
-        selectNode("seoul", ex_tip2);
-        drawLine(0, 1);
-        selectNode("greece", ex_tip3);
-        selectNode("athens", ex_tip4);
-        drawLine(2, 3);
+        setTimeout(() => {
+            selectNode("korea", ex_tip);
+            selectNode("seoul", ex_tip2);
+            drawLine(0, 1);
+            selectNode("greece", ex_tip3);
+            selectNode("athens", ex_tip4);
+            drawLine(2, 3);
+        }, 20);
     } else if (num == 2) {
         clearPair();
         clearLine();
@@ -117,7 +119,7 @@ const showSection = (num) => {
         setTimeout(() => {
             selectNode("Batman (1989)", ex_tip);
             selectNode("Dark Knight, The (2008)", ex_tip2);
-        }, 400);
+        }, 20);
         //drawLine(0, 1);
         switchData = true;
     } else if (num == 4) {
